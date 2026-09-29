@@ -242,9 +242,139 @@
       transform: scale(1.08);
       filter: invert(57%) sepia(91%) saturate(500%) hue-rotate(134deg) brightness(100%) contrast(95%);
     }
+
+    /* قائمة الجوال المنزلقة (Offcanvas Mobile Menu) */
+    #offcanvasMenu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 9999999;
+    }
+    #offcanvasMenu.active {
+      display: block !important;
+    }
+    .offcanvas-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .offcanvas-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 85vw;
+      height: 100%;
+      background-color: #ffffff;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+    }
   </style>
+  <script>
+    function openOffcanvas(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      var m = document.getElementById('offcanvasMenu');
+      if (m) {
+        m.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeOffcanvas(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      var m = document.getElementById('offcanvasMenu');
+      if (m) {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  </script>
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-brand selection:text-white">
+
+  <!-- ================= القائمة الجانبية للجوال (Offcanvas Menu) في أعلى مستند الصفحة ================= -->
+  <div id="offcanvasMenu">
+    <!-- خلفية داكنة معتمة عند النقر تغلق القائمة -->
+    <div onclick="closeOffcanvas(event)" class="offcanvas-backdrop"></div>
+    
+    <!-- اللوحة المنزلقة من اليمين -->
+    <div class="offcanvas-drawer">
+      
+      <!-- ترويسة القائمة وزر الإغلاق -->
+      <div class="flex items-center justify-between p-5 border-b border-slate-100 bg-white sticky top-0 z-10">
+        <div class="flex items-center gap-2">
+          <img src="assets/images/mologo1-.png" alt="Aden Net" class="h-8 w-auto" onerror="this.src='assets/images/logo.png'">
+        </div>
+        <button type="button" onclick="closeOffcanvas(event)" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-lg transition-colors cursor-pointer" aria-label="إغلاق">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+
+      <!-- محتوى القائمة القابل للتمرير -->
+      <div class="p-5 space-y-5 flex-1 overflow-y-auto">
+        <!-- مربع البحث -->
+        <div class="relative">
+          <input type="text" placeholder="البحث..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand">
+          <i class="fa fa-search absolute left-3 top-3 text-slate-400"></i>
+        </div>
+
+        <nav class="space-y-1 text-sm font-bold text-slate-700">
+          <a href="#home" onclick="closeOffcanvas(event)" class="block py-2.5 px-3 rounded-lg text-brand bg-brand-light/40">الرئيسية</a>
+          <a href="#news" onclick="closeOffcanvas(event)" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">أخر الأخبار والفعاليات</a>
+          <a href="#services" onclick="closeOffcanvas(event)" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">خدماتنا والأسعار</a>
+          <a href="#coverage" onclick="closeOffcanvas(event)" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">التغطية والمناطق</a>
+          <a href="#locations" onclick="closeOffcanvas(event)" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">موقعنا ومراكز الخدمة</a>
+          <a href="#issues" onclick="closeOffcanvas(event)" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">المشكلات الشائعة</a>
+          
+          <div class="pt-3 pb-1 border-t border-slate-100 text-xs font-black text-slate-400 px-3">الخدمات الإلكترونية المباشرة:</div>
+          
+          <a href="services.html" class="block py-2.5 px-3 rounded-lg text-brand bg-brand-light/20 flex items-center gap-2 font-black">
+            <i class="fa-solid fa-layer-group text-brand"></i>
+            <span>بوابة الخدمات الإلكترونية</span>
+          </a>
+          <a href="balance.html" class="block py-2.5 px-3 rounded-lg text-teal-800 bg-teal-50 flex items-center gap-2 font-black">
+            <i class="fa-solid fa-receipt text-teal-600"></i>
+            <span>الاستعلام عن الرصيد (SSP)</span>
+          </a>
+          <a href="user-data.html" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+            <i class="fa-solid fa-id-card text-brand"></i>
+            <span>استعلام عن بيانات المستخدم</span>
+          </a>
+          <a href="new-sim.html" class="block py-2 px-3 rounded-lg text-amber-700 hover:bg-amber-50 flex items-center gap-2 font-black">
+            <i class="fa-solid fa-sim-card text-amber-500"></i>
+            <span>التقديم لشريحة 4G جديدة</span>
+          </a>
+          <a href="sim-replacement.html" class="block py-2 px-3 rounded-lg text-blue-700 hover:bg-blue-50 flex items-center gap-2 font-black">
+            <i class="fa-solid fa-repeat text-blue-500"></i>
+            <span>تقديم طلب بدل فاقد</span>
+          </a>
+        </nav>
+
+        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-y-2">
+          <div>هاتف الدعم: <span dir="ltr">+967 2 241401</span></div>
+          <div>البريد: info@adennet4g.net</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ================= 1. الشريط العلوي (sp-top-bar) ================= -->
   <section id="sp-top-bar" class="text-white text-xs sm:text-sm py-2.5 px-4 shadow-sm relative z-30">
@@ -385,8 +515,8 @@
         </nav>
 
         <!-- زر القائمة المتنقلة للجوال (Off-canvas Toggler) -->
-        <button id="offcanvasToggle" class="lg:hidden text-2xl text-brand p-2 focus:outline-none" aria-label="القائمة">
-          <i class="fa fa-bars"></i>
+        <button id="offcanvasToggle" type="button" onclick="openOffcanvas(event)" class="lg:hidden text-2xl text-brand p-2 focus:outline-none cursor-pointer" aria-label="القائمة">
+          <i class="fa fa-bars pointer-events-none"></i>
         </button>
 
       </div>
@@ -1283,67 +1413,6 @@
     </div>
   </footer>
 
-  <!-- ================= 12. القائمة الجانبية للجوال (Offcanvas Menu) ================= -->
-  <div id="offcanvasMenu" class="fixed inset-0 z-50 hidden">
-    <!-- خلفية داكنة -->
-    <div onclick="closeOffcanvas()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-    
-    <!-- اللوحة المنزلقة -->
-    <div class="fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-50 p-6 shadow-2xl overflow-y-auto space-y-6">
-      
-      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-        <span class="font-black text-brand text-lg">قائمة عدن نت</span>
-        <button onclick="closeOffcanvas()" class="text-slate-400 hover:text-slate-700 text-xl" aria-label="إغلاق">
-          <i class="fa fa-times"></i>
-        </button>
-      </div>
-
-      <!-- مربع البحث المطابق لـ Joomla Search في الأصل -->
-      <div class="relative">
-        <input type="text" placeholder="البحث..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand">
-        <i class="fa fa-search absolute left-3 top-3 text-slate-400"></i>
-      </div>
-
-      <nav class="space-y-1 text-sm font-bold text-slate-700">
-        <a href="#home" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg text-brand bg-brand-light/40">الرئيسية</a>
-        <a href="#news" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">اخبارنا</a>
-        <a href="#services" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">خدماتنا والأسعار</a>
-        <a href="#coverage" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">التغطية والمناطق</a>
-        <a href="#locations" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">موقعنا ومراكز الخدمة</a>
-        <a href="#issues" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">المشكلات الشائعة</a>
-        
-        <div class="pt-3 pb-1 border-t border-slate-100 text-xs font-black text-slate-400 px-3">الخدمات الإلكترونية الذاتية:</div>
-        
-        <a href="services.html" class="block py-2 px-3 rounded-lg text-brand hover:bg-teal-50 flex items-center gap-2 font-black">
-          <i class="fa-solid fa-layer-group text-brand"></i>
-          <span>بوابة الخدمات الإلكترونية</span>
-        </a>
-        <a href="balance.html" class="block py-2.5 px-3 rounded-lg text-teal-700 bg-teal-50 flex items-center gap-2 font-black">
-          <i class="fa-solid fa-receipt text-brand"></i>
-          <span>الاستعلام عن الرصيد (SSP)</span>
-        </a>
-        <a href="user-data.html" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-          <i class="fa-solid fa-id-card text-brand"></i>
-          <span>استعلام عن بيانات المستخدم</span>
-        </a>
-        <a href="new-sim.html" class="block py-2 px-3 rounded-lg text-amber-600 hover:bg-amber-50 flex items-center gap-2">
-          <i class="fa-solid fa-sim-card text-amber-500"></i>
-          <span>التقديم لشريحة 4G جديدة</span>
-        </a>
-        <a href="sim-replacement.html" class="block py-2 px-3 rounded-lg text-blue-600 hover:bg-blue-50 flex items-center gap-2">
-          <i class="fa-solid fa-repeat text-blue-500"></i>
-          <span>تقديم طلب بدل فاقد</span>
-        </a>
-      </nav>
-
-      <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-y-2">
-        <div>هاتف الدعم: <span dir="ltr">+967 2 241401</span></div>
-        <div>البريد: info@adennet4g.net</div>
-      </div>
-
-    </div>
-  </div>
-
   <!-- ================= 13. نافذة الاستعلام عن الرصيد المنبثقة (Balance Modal) ================= -->
   <div id="balanceModal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
     <div onclick="closeBalanceModal()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
@@ -1878,12 +1947,21 @@
 
     // القائمة المتنقلة للجوال (Offcanvas)
     const offcanvasMenu = document.getElementById('offcanvasMenu');
-    document.getElementById('offcanvasToggle').addEventListener('click', () => {
-      offcanvasMenu.classList.remove('hidden');
-    });
-
+    function openOffcanvas() {
+      if (offcanvasMenu) {
+        offcanvasMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
     function closeOffcanvas() {
-      offcanvasMenu.classList.add('hidden');
+      if (offcanvasMenu) {
+        offcanvasMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    const offcanvasBtn = document.getElementById('offcanvasToggle');
+    if (offcanvasBtn) {
+      offcanvasBtn.addEventListener('click', openOffcanvas);
     }
 
     // أكورديون المشكلات الشائعة

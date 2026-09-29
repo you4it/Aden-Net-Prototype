@@ -51,7 +51,70 @@
     #sp-footer { background-color: #20bfc7; }
     .nav-link { color: #333333; font-weight: 700; transition: all 0.2s ease; }
     .nav-link:hover, .nav-link.active { color: #20bfc7; }
+  
+        /* قائمة الجوال المنزلقة (Offcanvas Mobile Menu) */
+    #offcanvasMenu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 9999999;
+    }
+    #offcanvasMenu.active {
+      display: block !important;
+    }
+    .offcanvas-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .offcanvas-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 85vw;
+      height: 100%;
+      background-color: #ffffff;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+    }
   </style>
+  <script>
+    function openOffcanvas(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      var m = document.getElementById("offcanvasMenu");
+      if (m) {
+        m.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    }
+    function closeOffcanvas(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      var m = document.getElementById("offcanvasMenu");
+      if (m) {
+        m.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+  </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand selection:text-white flex flex-col min-h-screen">
 
@@ -122,7 +185,7 @@
           </a>
         </nav>
 
-        <button id="offcanvasToggle" class="lg:hidden text-2xl text-brand p-2 focus:outline-none" aria-label="القائمة">
+        <button id="offcanvasToggle" type="button" onclick="openOffcanvas(event)" class="lg:hidden text-2xl text-brand p-2 focus:outline-none cursor-pointer" aria-label="القائمة">
           <i class="fa fa-bars"></i>
         </button>
       </div>
@@ -359,9 +422,9 @@
   </footer>
 
   <!-- ================= 7. القائمة الجانبية للجوال (Offcanvas Menu) ================= -->
-  <div id="offcanvasMenu" class="fixed inset-0 z-50 hidden">
-    <div onclick="closeOffcanvas()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-50 p-6 shadow-2xl overflow-y-auto space-y-6">
+  <div id="offcanvasMenu">
+    <div onclick="closeOffcanvas()" class="offcanvas-backdrop"></div>
+    <div class="offcanvas-drawer p-6 space-y-6">
       <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <span class="font-black text-brand text-lg">قائمة عدن نت</span>
         <button onclick="closeOffcanvas()" class="text-slate-400 hover:text-slate-700 text-xl" aria-label="إغلاق">
@@ -387,12 +450,20 @@
   <script>
     // القائمة المتنقلة للجوال
     const offcanvasMenu = document.getElementById('offcanvasMenu');
-    document.getElementById('offcanvasToggle').addEventListener('click', () => {
-      offcanvasMenu.classList.remove('hidden');
-    });
-    function closeOffcanvas() {
-      offcanvasMenu.classList.add('hidden');
+    function openOffcanvas() {
+      if (offcanvasMenu) {
+        offcanvasMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
     }
+    function closeOffcanvas() {
+      if (offcanvasMenu) {
+        offcanvasMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    const offcanvasBtn = document.getElementById('offcanvasToggle');
+    if (offcanvasBtn) offcanvasBtn.addEventListener('click', openOffcanvas);
 
     // معالجة الاستعلام
     function handleInquiry(e) {
