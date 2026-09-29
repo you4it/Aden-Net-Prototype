@@ -1,0 +1,2619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar-aa" lang="ar-aa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>عدن نت | المزود الحكومي لخدمة الإنترنت بتقنية الجيل الرابع 4G</title>
+  <link rel="shortcut icon" href="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/FAV-ICON0.png" type="image/vnd.microsoft.icon"/>
+
+  <!-- Google Fonts: Cairo & Tajawal لمحاكاة خط 29LT Bukra Bold الأصلي -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet Map CSS & JS (Interactive Cell Towers Map) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              top: '#12c1c7',     /* لون الشريط العلوي الأصلي */
+              DEFAULT: '#20bfc7', /* لون العناوين والفوتر الأصلي */
+              dark: '#0c848a',
+              light: '#e0f9fa'
+            },
+            accent: {
+              DEFAULT: '#fab641', /* لون التمرير والأزرار الذهبي الأصلي */
+              hover: '#e59d28'
+            }
+          },
+          fontFamily: {
+            bukra: ['Cairo', 'Tajawal', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      scroll-behavior: smooth;
+    }
+    /* الألوان والقيم المطابقة لقالب Helix3 الأصلي */
+    #sp-top-bar {
+      background-color: #12c1c7;
+    }
+    #sp-top-bar a {
+      color: #ffffff;
+      transition: color 0.2s ease;
+    }
+    #sp-top-bar a:hover {
+      color: #fab641;
+    }
+    .sp-addon-title, .theme-title {
+      color: #20bfc7;
+      font-weight: 800;
+    }
+    #sp-bottom {
+      background-color: #ffffff;
+      color: #20bfc7;
+      padding: 70px 0px;
+    }
+    #sp-footer {
+      background-color: #20bfc7;
+    }
+    .nav-link {
+      color: #333333;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #20bfc7;
+    }
+
+    /* ============= تأثيرات أنميشن راقية وسلسة ============= */
+
+    /* 1. موجات البث الراداري لشبكة 4G LTE */
+    .radar-pulse {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(18, 193, 199, 0.7);
+      animation: rippleWave 3.6s cubic-bezier(0.1, 0.3, 0.4, 1) infinite;
+      pointer-events: none;
+    }
+    .radar-pulse:nth-child(2) {
+      animation-delay: 1.2s;
+    }
+    .radar-pulse:nth-child(3) {
+      animation-delay: 2.4s;
+    }
+    @keyframes rippleWave {
+      0% {
+        width: 80px;
+        height: 80px;
+        opacity: 0.85;
+        transform: translate(-50%, -50%) scale(0.6);
+        box-shadow: 0 0 15px rgba(18, 193, 199, 0.5);
+      }
+      100% {
+        width: 360px;
+        height: 360px;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.3);
+      }
+    }
+
+    /* 2. الطفو الانسيابي الناعم */
+    .float-smooth {
+      animation: floatMotion 5s ease-in-out infinite;
+    }
+    @keyframes floatMotion {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-9px); }
+    }
+
+    /* 3. وميض لمبات المودم التفاعلية */
+    .led-flash {
+      animation: ledPulse 1.4s infinite;
+    }
+    @keyframes ledPulse {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 4px #34d399); }
+      50% { opacity: 0.35; filter: none; }
+    }
+
+    /* 4. ظهور تدريجي سلس عند التمرير (Scroll Reveal) */
+    .reveal-box {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-box.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 5. شريط الوقت والتقدم الزمني للسلايدر */
+    .slide-timer-line {
+      height: 3px;
+      background: linear-gradient(90deg, #fab641, #12c1c7);
+      animation: slideCountdown 7s linear infinite;
+    }
+    @keyframes slideCountdown {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* 6. حركة شبكة خطوط البيانات بالخلفية */
+    .bg-grid-stream {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(18, 193, 199, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(18, 193, 199, 0.08) 1px, transparent 1px);
+      animation: streamDrift 25s linear infinite;
+    }
+    @keyframes streamDrift {
+      0% { background-position: 0 0; }
+      100% { background-position: 32px 32px; }
+    }
+
+    /* أنميشن رادار أبراج البث التفاعلية على الخريطة */
+    .tower-marker-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tower-radar-wave {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #20bfc7;
+      animation: towerWave 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+      pointer-events: none;
+    }
+    .tower-radar-wave:nth-child(2) {
+      animation-delay: 0.7s;
+    }
+    .tower-radar-wave:nth-child(3) {
+      animation-delay: 1.4s;
+    }
+    @keyframes towerWave {
+      0% { width: 10px; height: 10px; opacity: 1; border-color: #fab641; }
+      50% { border-color: #20bfc7; }
+      100% { width: 52px; height: 52px; opacity: 0; border-color: rgba(32, 191, 199, 0); }
+    }
+
+    /* تخصيص نوافذ الخريطة المنبثقة */
+    .leaflet-popup-content-wrapper {
+      border-radius: 1.25rem !important;
+      padding: 0 !important;
+      overflow: hidden;
+      box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.25) !important;
+      border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    }
+    .leaflet-popup-content {
+      margin: 0 !important;
+      line-height: 1.4 !important;
+    }
+    .leaflet-container {
+      font-family: 'Cairo', 'Tajawal', sans-serif !important;
+    }
+    .tower-map-tooltip {
+      background-color: #0f172a !important;
+      color: #ffffff !important;
+      font-family: 'Cairo', 'Tajawal', sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      border: 1px solid #14a8b2 !important;
+      border-radius: 8px !important;
+      padding: 4px 10px !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+      white-space: nowrap !important;
+    }
+    .tower-map-tooltip::before {
+      border-top-color: #0f172a !important;
+    }
+    /* إظهار القائمة المنسدلة عند النقر */
+    .nav-dropdown-menu.nav-open {
+      display: block !important;
+    }
+    /* توحيد لون أيقونات المميزات مع الهوية البصرية الرسمية */
+    .brand-icon-filter {
+      filter: invert(57%) sepia(91%) saturate(387%) hue-rotate(134deg) brightness(93%) contrast(90%);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .group:hover .brand-icon-filter {
+      transform: scale(1.08);
+      filter: invert(57%) sepia(91%) saturate(500%) hue-rotate(134deg) brightness(100%) contrast(95%);
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-brand selection:text-white">
+
+  <!-- ================= 1. الشريط العلوي (sp-top-bar) ================= -->
+  <section id="sp-top-bar" class="text-white text-xs sm:text-sm py-2.5 px-4 shadow-sm relative z-30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      
+      <!-- الجانب الأيمن (في RTL): بيانات الاتصال واللغة كما في الموقع الأصلي -->
+      <div class="flex items-center gap-4 sm:gap-6 flex-wrap">
+        <!-- تبديل اللغة -->
+        <div class="flex items-center gap-1 font-bold">
+          <i class="fa fa-globe"></i>
+          <a href="#" class="hover:underline">English</a>
+        </div>
+
+        <span class="text-white/40">|</span>
+
+        <!-- هاتف الدعم الفني -->
+        <div class="flex items-center gap-2">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <a href="tel:+9672241401" class="font-bold tracking-wide">
+            9672241401+ : الدعم الفني
+          </a>
+        </div>
+
+        <span class="text-white/40 hidden sm:inline">|</span>
+
+        <!-- البريد الإلكتروني -->
+        <div class="hidden sm:flex items-center gap-2">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <a href="mailto:info@adennet4g.net">info@adennet4g.net</a>
+        </div>
+      </div>
+
+      <!-- الجانب الأيسر (في RTL): روابط وسائل التواصل الاجتماعي -->
+      <div class="flex items-center gap-4">
+        <ul class="flex items-center gap-3.5 text-sm">
+          <li>
+            <a target="_blank" href="https://www.facebook.com/adennet4g" aria-label="facebook" class="hover:scale-110 transition-transform inline-block">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://twitter.com/@s3fkysqHLVNi0BO" aria-label="twitter" class="hover:scale-110 transition-transform inline-block">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.youtube.com/channel/UCUkTB3NB5WIc2P4XvDSRCOA" aria-label="youtube" class="hover:scale-110 transition-transform inline-block">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 2. الهيدر الرئيسي والشعار والقائمة (sp-header) ================= -->
+  <header id="sp-header" class="bg-white sticky top-0 z-40 border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-24">
+        
+        <!-- اللوغو الحقيقي الأصلي لعدن نت كصورة حرفياً كما في الموقع الأصلي -->
+        <div class="logo flex items-center">
+          <a href="#home" class="block">
+            <img class="sp-default-logo hidden sm:block max-h-16 w-auto" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/ran/logo2x.png" alt="ADEN" width="215" height="94" onerror="this.onerror=null; this.src='https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/logo.png';">
+            <img class="sp-default-logo sm:hidden max-h-12 w-auto" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/mologo1-.png" alt="ADEN" width="160" height="70" onerror="this.onerror=null; this.src='https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/logo.png';">
+          </a>
+        </div>
+
+        <!-- القائمة الرئيسية (مطابقة تماماً لقائمة الموقع الأصلي + الخدمات المضافة) -->
+        <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-[15px]">
+          <a href="#home" class="nav-link active px-3 py-2 font-black border-b-2 border-brand">الرئيسية</a>
+          
+          <!-- قائمة منسدلة: اخبارنا -->
+          <div class="relative group">
+            <button onclick="toggleNavDropdown('newsDropdown', event)" class="nav-link px-3 py-2 flex items-center gap-1.5 focus:outline-none cursor-pointer">
+              <span>اخبارنا</span>
+              <i class="fa fa-angle-down text-xs text-slate-400 group-hover:text-brand"></i>
+            </button>
+            <div id="newsDropdown" class="nav-dropdown-menu absolute right-0 top-full hidden group-hover:block w-48 bg-white border border-slate-100 shadow-xl rounded-b-xl py-2 z-50">
+              <a href="#news" onclick="closeAllNavDropdowns()" class="block px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand">أخر الأخبار</a>
+              <a href="#gallery" onclick="closeAllNavDropdowns()" class="block px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand">معرض الصور</a>
+            </div>
+          </div>
+
+          <a href="#services" class="nav-link px-3 py-2">خدماتنا</a>
+          <a href="#coverage" class="nav-link px-3 py-2">التغطية</a>
+
+          <!-- قائمة منسدلة: خدمات المشتركين الإلكترونية -->
+          <div class="relative group">
+            <a href="services.html" class="nav-link px-3 py-2 flex items-center gap-1.5 text-brand font-bold">
+              <span>خدمات المشتركين</span>
+              <i class="fa fa-angle-down text-xs text-slate-400 group-hover:text-brand"></i>
+            </a>
+            <div id="servicesDropdown" class="nav-dropdown-menu absolute right-0 top-full hidden group-hover:block w-64 bg-white border border-slate-100 shadow-xl rounded-b-xl py-2 z-50">
+              <a href="user-data.html" class="w-full text-right px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand flex items-center gap-2">
+                <i class="fa-solid fa-id-card text-brand"></i>
+                <span>استعلام عن بيانات المستخدم</span>
+              </a>
+              <a href="new-sim.html" class="w-full text-right px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand flex items-center gap-2">
+                <i class="fa-solid fa-sim-card text-amber-500"></i>
+                <span>التقديم لشريحة 4G جديدة</span>
+              </a>
+              <a href="sim-replacement.html" class="w-full text-right px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand flex items-center gap-2">
+                <i class="fa-solid fa-repeat text-blue-500"></i>
+                <span>تقديم طلب بدل فاقد</span>
+              </a>
+              <a href="balance.html" class="w-full text-right px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand flex items-center gap-2 border-t border-slate-100">
+                <i class="fa-solid fa-receipt text-teal-600"></i>
+                <span>الاستعلام عن الرصيد (SSP)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- قائمة منسدلة: المشكلات الشائعة -->
+          <div class="relative group">
+            <button onclick="toggleNavDropdown('issuesDropdown', event)" class="nav-link px-3 py-2 flex items-center gap-1.5 focus:outline-none cursor-pointer">
+              <span>المشكلات الشائعة</span>
+              <i class="fa fa-angle-down text-xs text-slate-400 group-hover:text-brand"></i>
+            </button>
+            <div id="issuesDropdown" class="nav-dropdown-menu absolute right-0 top-full hidden group-hover:block w-72 bg-white border border-slate-100 shadow-xl rounded-b-xl py-2 z-50">
+              <a href="#issues" onclick="closeAllNavDropdowns()" class="block px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand">عمل المودم بشكل طبيعي و عدم وجود أنترنت</a>
+              <a href="#issues" onclick="closeAllNavDropdowns()" class="block px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand">إعدادات تفعيل الهوائي للمودم</a>
+              <a href="#issues" onclick="closeAllNavDropdowns()" class="block px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand">إعدادات ضبط المصنع للمودم</a>
+              <a href="balance.html" class="block px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand">الإستعلام عن الرصيد</a>
+              <a href="#issues" onclick="closeAllNavDropdowns()" class="block px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-brand">تحديث المودم لحل مشكلة البروفايل</a>
+            </div>
+          </div>
+
+          <a href="#locations" class="nav-link px-3 py-2">موقعنا</a>
+          <a href="new-sim.html" class="nav-link px-3 py-2 font-bold text-amber-600">التسجيل</a>
+
+          <!-- رابط مميز للاستعلام عن الرصيد -->
+          <a href="balance.html" class="ml-2 px-4 py-2 rounded-lg bg-brand hover:bg-brand-dark text-white font-bold text-xs shadow-md shadow-brand/20 transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-receipt"></i>
+            <span>الاستعلام عن رصيد</span>
+          </a>
+        </nav>
+
+        <!-- زر القائمة المتنقلة للجوال (Off-canvas Toggler) -->
+        <button id="offcanvasToggle" class="lg:hidden text-2xl text-brand p-2 focus:outline-none" aria-label="القائمة">
+          <i class="fa fa-bars"></i>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 3. السلايدر التفاعلي شاشة كاملة (Full Screen Hero Slider) ================= -->
+  <section id="home" class="relative bg-slate-900 text-white overflow-hidden min-h-[calc(100vh-134px)] lg:h-[calc(100vh-134px)] flex items-center justify-center">
+    
+    <!-- خلفية السلايدر المتحركة (تأثير انسياب خطوط بيانات الجيل الرابع) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-teal-950 via-slate-900 to-teal-900 opacity-95"></div>
+    <div class="absolute inset-0 bg-grid-stream opacity-40"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 py-8 lg:py-10 h-full flex flex-col justify-center">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full my-auto">
+        
+        <!-- المحتوى الرئيسي للسلايد المعروض -->
+        <div class="lg:col-span-5 space-y-6 text-center lg:text-right flex flex-col justify-center">
+
+          <!-- مؤشر الشريحة كالموقع الأصلي -->
+          <div class="flex items-center justify-center lg:justify-start gap-2">
+            <span id="slideCounter" class="text-xs sm:text-sm font-mono font-bold bg-brand/20 text-brand px-3.5 py-1 rounded-full border border-brand/30">01 / 04</span>
+            <span class="text-xs text-slate-400 font-bold">بوابة الإنترنت الأولى في اليمن</span>
+          </div>
+
+          <h1 id="slideTitle" class="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black text-white leading-tight">
+            أسرع خدمة إنترنت <br>
+            بتقنية <span class="text-brand">الجيل الرابع 4G</span>
+          </h1>
+
+          <p id="slideDesc" class="text-slate-200 text-base sm:text-lg xl:text-xl max-w-xl font-medium leading-relaxed">
+            عدن نت توفر أحدث شبكة إنترنت لاسلكي فائق السرعة بسرعة تصل حتى <strong>20 ميجابايت/ثانية</strong>. بدون أسلاك أو تمديدات أرضية، فقط وصّل المودم وانطلق!
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="balance.html" class="px-7 py-3.5 bg-accent hover:bg-accent-hover text-slate-900 font-black rounded-xl shadow-lg hover:shadow-amber-500/20 transition-all flex items-center gap-2 text-sm sm:text-base transform hover:-translate-y-0.5">
+              <i class="fa fa-search"></i>
+              <span>الاستعلام عن الرصيد (SSP)</span>
+            </a>
+
+            <a href="#services" class="px-7 py-3.5 bg-brand hover:bg-brand-dark text-white font-bold rounded-xl shadow-lg hover:shadow-brand/20 transition-all text-sm sm:text-base transform hover:-translate-y-0.5">
+              <span>استعراض الباقات والأسعار</span>
+            </a>
+          </div>
+
+          <!-- أزرار التنقل بين الشرائح (Previous / Next) كالموقع الأصلي -->
+          <div class="pt-4 flex items-center justify-center lg:justify-start gap-3">
+            <button onclick="prevSlide()" class="w-11 h-11 rounded-full bg-white/10 hover:bg-brand hover:text-white flex items-center justify-center text-white transition-colors border border-white/20 text-lg" aria-label="السابق">
+              <i class="fa fa-angle-right"></i>
+            </button>
+            <button onclick="nextSlide()" class="w-11 h-11 rounded-full bg-white/10 hover:bg-brand hover:text-white flex items-center justify-center text-white transition-colors border border-white/20 text-lg" aria-label="التالي">
+              <i class="fa fa-angle-left"></i>
+            </button>
+            <span class="text-xs sm:text-sm text-slate-400 font-bold mr-2">تصفح العروض والخدمات</span>
+          </div>
+
+        </div>
+
+        <!-- مساحة عرض صور البانر الرسمية شاشة كاملة بحجم كبير جداً وواضح -->
+        <div class="lg:col-span-7 flex justify-center items-center h-full py-4">
+          <div class="w-full flex items-center justify-center">
+            <img id="slideImage" 
+                 src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/SLI.png" 
+                 alt="عدن نت 4G" 
+                 class="w-full h-auto max-h-[480px] sm:max-h-[560px] lg:max-h-[620px] xl:max-h-[680px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-all duration-500 rounded-3xl"
+                 onerror="this.style.display='none'">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- شريط تقدم زمني متكرر للسلايدر -->
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-black/40 overflow-hidden">
+      <div id="slideProgressBar" class="slide-timer-line"></div>
+    </div>
+  </section>
+
+  <!-- ================= 3.1. شريط الخدمات الإلكترونية السريعة (E-Services Bar) ================= -->
+  <section class="relative z-20 -mt-8 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- خدمة 1: استعلام عن بيانات المستخدم -->
+      <a href="user-data.html" class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-teal-50/70 border border-slate-100 hover:border-brand/40 transition-all text-right group">
+        <div class="w-11 h-11 rounded-xl bg-teal-500/10 text-brand flex items-center justify-center text-lg shrink-0 group-hover:bg-brand group-hover:text-white transition-colors">
+          <i class="fa-solid fa-id-card-clip"></i>
+        </div>
+        <div>
+          <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-brand transition-colors">بيانات المشترك</h4>
+          <p class="text-[11px] text-slate-500 font-bold mt-0.5">استعلام عن الحساب ورمز PUK</p>
+        </div>
+      </a>
+
+      <!-- خدمة 2: التقديم لشريحة جديدة -->
+      <a href="new-sim.html" class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-amber-50/70 border border-slate-100 hover:border-accent/50 transition-all text-right group">
+        <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-lg shrink-0 group-hover:bg-accent group-hover:text-slate-900 transition-colors">
+          <i class="fa-solid fa-sim-card"></i>
+        </div>
+        <div>
+          <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-amber-600 transition-colors">التقديم لشريحة 4G</h4>
+          <p class="text-[11px] text-slate-500 font-bold mt-0.5">حجز شريحة ومودم جديد إلكترونياً</p>
+        </div>
+      </a>
+
+      <!-- خدمة 3: تقديم طلب بدل فاقد -->
+      <a href="sim-replacement.html" class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-100 hover:border-blue-400/40 transition-all text-right group">
+        <div class="w-11 h-11 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-lg shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <div>
+          <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">طلب بدل فاقد</h4>
+          <p class="text-[11px] text-slate-500 font-bold mt-0.5">استبدال الشريحة التالفة أو المفقودة</p>
+        </div>
+      </a>
+
+      <!-- خدمة 4: موقعنا ومراكز الخدمة -->
+      <a href="#locations" class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50/70 border border-slate-100 hover:border-emerald-400/40 transition-all text-right group">
+        <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-lg shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+          <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+        <div>
+          <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-emerald-600 transition-colors">موقعنا ومراكزنا</h4>
+          <p class="text-[11px] text-slate-500 font-bold mt-0.5">خريطة الفروع ومكاتب الخدمة المعتمدة</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. المميزات الأربعة الأساسية (المطابقة حرفياً للموقع الأصلي) ================= -->
+  <section class="py-16 bg-white border-b border-slate-100 reveal-box">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- ميزة 1: سهولة الربط -->
+        <div class="text-center group p-6 rounded-2xl hover:bg-brand-light/30 transition-all border border-transparent hover:border-brand/20">
+          <div class="sppb-img-container mb-3 flex justify-center">
+            <img class="max-h-24 w-auto object-contain mx-auto brand-icon-filter" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/07/29/oie_transparent-28.png" alt="سهولة الربط" onerror="this.onerror=null; this.src='https://www.adennet4g.net/images/2018/07/29/oie_transparent-28.png';">
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">سهولة الربط</h3>
+          <p class="text-slate-600 text-sm leading-relaxed font-bold">
+            يمكنك استعمال خدماتنا من اي مكان دون الاعتماد على أي توصيلات خاصة
+          </p>
+        </div>
+
+        <!-- ميزة 2: سرعات خيالية -->
+        <div class="text-center group p-6 rounded-2xl hover:bg-brand-light/30 transition-all border border-transparent hover:border-brand/20">
+          <div class="sppb-img-container mb-3 flex justify-center">
+            <img class="max-h-24 w-auto object-contain mx-auto brand-icon-filter" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/07/29/oie_transparent-24.png" alt="سرعات خيالية" onerror="this.onerror=null; this.src='https://www.adennet4g.net/images/2018/07/29/oie_transparent-24.png';">
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">سرعات خيالية</h3>
+          <p class="text-slate-600 text-sm leading-relaxed font-bold">
+            سرعات تتراوح إلى 20 ميجا
+          </p>
+        </div>
+
+        <!-- ميزة 3: سهولة اعداد الخدمة -->
+        <div class="text-center group p-6 rounded-2xl hover:bg-brand-light/30 transition-all border border-transparent hover:border-brand/20">
+          <div class="sppb-img-container mb-3 flex justify-center">
+            <img class="max-h-24 w-auto object-contain mx-auto brand-icon-filter" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/07/29/oie_transparent-27.png" alt="سهولة اعداد الخدمة" onerror="this.onerror=null; this.src='https://www.adennet4g.net/images/2018/07/29/oie_transparent-27.png';">
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">سهولة اعداد الخدمة</h3>
+          <p class="text-slate-600 text-sm leading-relaxed font-bold">
+            كل ما عليك هو توصيل مودم عدن نت لاقرب قابس
+          </p>
+        </div>
+
+        <!-- ميزة 4: دعم فني متواصل -->
+        <div class="text-center group p-6 rounded-2xl hover:bg-brand-light/30 transition-all border border-transparent hover:border-brand/20">
+          <div class="sppb-img-container mb-3 flex justify-center">
+            <img class="max-h-24 w-auto object-contain mx-auto brand-icon-filter" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/07/29/oie_transparent-23.png" alt="دعم فني متواصل" onerror="this.onerror=null; this.src='https://www.adennet4g.net/images/2018/07/29/oie_transparent-23.png';">
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">دعم فني متواصل</h3>
+          <p class="text-slate-600 text-sm leading-relaxed font-bold">
+            يعمل فريقنا الفني على مدار الساعه لتقديم أفضل انترنت لكم
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 5. قسم الفيديو والشعار الترويجي (section-id-1510554367) ================= -->
+  <section class="py-16 bg-slate-50 border-b border-slate-200/70 reveal-box">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- العمود الأيمن (في الأصل): النص والشعار -->
+        <div class="lg:col-span-6 text-center space-y-4">
+          <h2 class="text-3xl sm:text-4xl font-black text-brand tracking-wide">
+            عدن نت
+          </h2>
+          <div class="max-w-md mx-auto">
+            <p class="text-lg sm:text-xl font-extrabold text-slate-800 leading-relaxed">
+              لو الانترنت عندك بطيء حلك عندنا أسرع خدمة إنترنت بتقنية الجيل الرابع تغير حياتك ...
+            </p>
+          </div>
+          <div class="pt-4 flex justify-center gap-3">
+            <a href="balance.html" class="px-5 py-2.5 bg-brand hover:bg-brand-dark text-white font-bold rounded-xl text-sm transition-all shadow-md">
+              الاستعلام عن الرصيد
+            </a>
+            <a href="#services" class="px-5 py-2.5 bg-white border border-brand text-brand hover:bg-brand hover:text-white font-bold rounded-xl text-sm transition-all">
+              باقات الاشتراك
+            </a>
+          </div>
+        </div>
+
+        <!-- العمود الأيسر (في الأصل): فيديو اليوتيوب الرسمي المضمن -->
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-video bg-black">
+            <iframe 
+              class="w-full h-full" 
+              src="https://www.youtube.com/embed/sX7IReccDnc" 
+              title="فيديو تعريفي بخدمة عدن نت 4G" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5.1. قسم الشعار والأنميشن الأصلي (gif-logo1.gif) ================= -->
+  <section class="py-12 bg-white border-b border-slate-100 reveal-box">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-block w-full max-w-4xl rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 p-2 sm:p-4 bg-white">
+        <img src="assets/gif-logo1.gif" alt="شعار عدن نت 4G المتحرك" class="w-full h-auto max-h-[360px] object-contain mx-auto">
+      </div>
+     
+    </div>
+  </section>
+
+  <!-- ================= 6. قسم تعرفة وباقات عدن نت الرسمية ================= -->
+  <section id="services" class="py-16 bg-white border-b border-slate-100 reveal-box">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand">جدول تعرفة وباقات خدمة عدن نت (4G LTE)</h2>
+        <p class="text-slate-600 text-sm mt-2 font-bold">الأسعار والتعرفة الرسمية المعتمدة لاشتراكات الإنترنت اللاسلكي فائق السرعة</p>
+      </div>
+
+      <!-- جدول التعرفة الرسمي للخدمة (تصميم رسمي نظيف بدون كروت وبدون أزرار) -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+        <table class="w-full text-right border-collapse text-sm">
+          <thead>
+            <tr class="bg-brand text-white border-b border-brand-dark text-xs sm:text-sm font-bold">
+              <th class="py-4 px-5">الباقة</th>
+              <th class="py-4 px-5">سعة البيانات</th>
+              <th class="py-4 px-5">الرسوم الشهرية الرسمية</th>
+              <th class="py-4 px-5">السرعة القصوى</th>
+              <th class="py-4 px-5">مدة الصلاحية</th>
+              <th class="py-4 px-5 hidden md:table-cell">ملاحظات الاستخدام</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 font-semibold text-slate-700">
+            <!-- باقة 20 جيجا -->
+            <tr class="hover:bg-slate-50/80 transition-colors">
+              <td class="py-4 px-5 font-bold text-slate-900">
+                باقة 20 جيجا
+                <span class="block text-xs text-slate-400 font-normal">الباقة الأساسية</span>
+              </td>
+              <td class="py-4 px-5 font-mono font-bold text-brand text-base">20 GB</td>
+              <td class="py-4 px-5 font-bold text-slate-900">3,000 ريال يمني</td>
+              <td class="py-4 px-5 text-xs text-slate-600">تصل إلى 20 ميجابت/ث</td>
+              <td class="py-4 px-5 text-xs text-slate-600">30 يوماً</td>
+              <td class="py-4 px-5 text-xs text-slate-500 hidden md:table-cell">للتصفح واستخدام شبكات التواصل والمراسلة</td>
+            </tr>
+
+            <!-- باقة 40 جيجا -->
+            <tr class="bg-slate-50/50 hover:bg-slate-50 transition-colors">
+              <td class="py-4 px-5 font-bold text-slate-900">
+                باقة 40 جيجا
+                <span class="block text-xs text-slate-400 font-normal">الباقة المتوسطة</span>
+              </td>
+              <td class="py-4 px-5 font-mono font-bold text-brand text-base">40 GB</td>
+              <td class="py-4 px-5 font-bold text-slate-900">6,000 ريال يمني</td>
+              <td class="py-4 px-5 text-xs text-slate-600">تصل إلى 20 ميجابت/ث</td>
+              <td class="py-4 px-5 text-xs text-slate-600">30 يوماً</td>
+              <td class="py-4 px-5 text-xs text-slate-500 hidden md:table-cell">للاستخدام العائلي، اليوتيوب ومشاهدة الفيديو</td>
+            </tr>
+
+            <!-- باقة 60 جيجا -->
+            <tr class="hover:bg-slate-50/80 transition-colors">
+              <td class="py-4 px-5 font-bold text-slate-900">
+                باقة 60 جيجا
+                <span class="block text-xs text-slate-400 font-normal">الباقة المتقدمة</span>
+              </td>
+              <td class="py-4 px-5 font-mono font-bold text-brand text-base">60 GB</td>
+              <td class="py-4 px-5 font-bold text-slate-900">9,000 ريال يمني</td>
+              <td class="py-4 px-5 text-xs text-slate-600">تصل إلى 20 ميجابت/ث</td>
+              <td class="py-4 px-5 text-xs text-slate-600">30 يوماً</td>
+              <td class="py-4 px-5 text-xs text-slate-500 hidden md:table-cell">لأصحاب الأعمال المستقلة والتحميل المتكرر</td>
+            </tr>
+
+            <!-- باقة 80 جيجا -->
+            <tr class="bg-slate-50/50 hover:bg-slate-50 transition-colors">
+              <td class="py-4 px-5 font-bold text-slate-900">
+                باقة 80 جيجا
+                <span class="block text-xs text-slate-400 font-normal">الباقة الكبرى</span>
+              </td>
+              <td class="py-4 px-5 font-mono font-bold text-brand text-base">80 GB</td>
+              <td class="py-4 px-5 font-bold text-slate-900">12,000 ريال يمني</td>
+              <td class="py-4 px-5 text-xs text-slate-600">تصل إلى 20 ميجابت/ث</td>
+              <td class="py-4 px-5 text-xs text-slate-600">30 يوماً</td>
+              <td class="py-4 px-5 text-xs text-slate-500 hidden md:table-cell">أعلى سعة استهلاك، التحميل المكثف وتعدد الأجهزة</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- إرشادات وتعليمات السداد الرسمية -->
+      <div class="mt-8 bg-slate-50 border border-slate-200/90 rounded-2xl p-5 text-xs text-slate-600 font-semibold space-y-2">
+        <div class="font-bold text-slate-900 flex items-center gap-2 mb-2 text-sm">
+          <i class="fa-solid fa-circle-info text-brand"></i>
+          <span>تعليمات وإرشادات السداد والشحن:</span>
+        </div>
+        <ul class="list-disc list-inside space-y-1.5 pr-2">
+          <li>يتم شحن وتجديد الرصيد عبر مكاتب ومراكز البريد اليمني، ونقاط ومحلات الصرافة وشبكات السداد المعتمدة في عدن والمحافظات المغطاة.</li>
+          <li>صلاحية الباقة تبدأ من تاريخ السداد وتستمر لمدة 30 يوماً كاملة.</li>
+          <li>يمكن للمشترك شحن الباقة مجدداً في أي وقت قبل انتهاء الشهر في حال استنفاد رصيد الجيجابايت.</li>
+          <li>الأسعار الموضحة أعلاه هي التعرفة الرسمية المعتمدة لشركة عدن نت بدون رسوم إضافية.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. خريطة الأبراج التفاعلية ومناطق التغطية (Interactive Cell Towers Map) ================= -->
+  <section id="coverage" class="py-16 bg-slate-50 border-b border-slate-200/70 reveal-box">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold text-brand bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-100">
+          شبكة الجيل الرابع 4G LTE الحية
+        </span>
+        <h2 class="text-3xl font-black text-slate-900 mt-3">
+          خريطة الأبراج ومحطات البث التفاعلية
+        </h2>
+        <p class="text-slate-600 text-sm mt-2 font-bold leading-relaxed">
+          استكشف مواقع أبراج ومحطات إرسال عدن نت النشطة، افحص نطاق التغطية والسرعة في منطقتك، أو حدد أقرب برج لموقعك مباشرة.
+        </p>
+      </div>
+
+      <!-- لوحة التحكم بالفلاتر ومؤشرات الشبكة -->
+      <div class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200/90 shadow-sm mb-6 space-y-4">
+        
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <!-- فلاتر المدن والمناطق -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs font-bold text-slate-400 ml-1">تصفية المناطق:</span>
+            <button onclick="filterTowers('all')" id="tower-btn-all" class="tower-filter-btn px-3.5 py-1.5 rounded-xl bg-brand text-white font-bold text-xs shadow-sm transition-all">
+              كافة الأبراج (12)
+            </button>
+            <button onclick="filterTowers('khormaksar')" id="tower-btn-khormaksar" class="tower-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all">
+              خورمكسر
+            </button>
+            <button onclick="filterTowers('mansoura')" id="tower-btn-mansoura" class="tower-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all">
+              المنصورة والشيخ عثمان
+            </button>
+            <button onclick="filterTowers('crater')" id="tower-btn-crater" class="tower-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all">
+              كريتر والمعلا والتواهي
+            </button>
+            <button onclick="filterTowers('mukalla')" id="tower-btn-mukalla" class="tower-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all">
+              المكلا - حضرموت
+            </button>
+            <button onclick="filterTowers('lahj_abyan')" id="tower-btn-lahj_abyan" class="tower-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all">
+              لحج وأبين
+            </button>
+          </div>
+
+          <!-- أدوات إضافية -->
+          <div class="flex items-center gap-2">
+            <button onclick="findNearestTower()" class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-black text-xs transition-all flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-crosshairs"></i>
+              <span>أقرب برج لموقعي</span>
+            </button>
+            <button onclick="toggleCoverageCircles()" id="toggleCirclesBtn" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-dot text-brand"></i>
+              <span id="circlesBtnText">إخفاء دوائر التغطية</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- شريط الإحصائيات الحية للأبراج -->
+        <div class="pt-3 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-bold text-slate-600">
+          <div class="bg-slate-50 p-2.5 rounded-xl">
+            <span class="text-slate-400 block text-[10px]">الأبراج والمحطات:</span>
+            <span class="text-brand font-black text-sm">12 محطة رئيسية</span>
+          </div>
+          <div class="bg-slate-50 p-2.5 rounded-xl">
+            <span class="text-slate-400 block text-[10px]">حالة البث والجاهزية:</span>
+            <span class="text-emerald-600 font-black text-sm flex items-center justify-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              99.8% تعمل بكفاءة
+            </span>
+          </div>
+          <div class="bg-slate-50 p-2.5 rounded-xl">
+            <span class="text-slate-400 block text-[10px]">ترددات الجيل الرابع:</span>
+            <span class="text-slate-800 font-mono font-black text-sm">B3 / B28 (LTE)</span>
+          </div>
+          <div class="bg-slate-50 p-2.5 rounded-xl">
+            <span class="text-slate-400 block text-[10px]">السرعة الميدانية:</span>
+            <span class="text-amber-600 font-black text-sm">تصل إلى 20 Mbps</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- حاوية خريطة الأبراج التفاعلية مع تفاصيل البرج المختار -->
+      <div class="grid lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- عنصر خريطة Leaflet التفاعلية -->
+        <div class="lg:col-span-8 rounded-3xl overflow-hidden shadow-xl border-2 border-slate-200 relative min-h-[460px] h-[520px] bg-slate-900">
+          <div id="towersMap" class="w-full h-full relative z-10"></div>
+          
+          <!-- شارة عرض الأقمار الصناعية المعتمد لشبكة الأبراج -->
+          <div class="absolute top-4 right-4 z-20 bg-slate-900/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl shadow-lg border border-white/20 text-white font-bold text-xs flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <i class="fa-solid fa-satellite text-amber-400"></i>
+            <span>عرض الأقمار الصناعية الفضائية (Satellite)</span>
+          </div>
+
+          <!-- مفتاح الخريطة (Legend Overlay) -->
+          <div class="absolute bottom-4 right-4 z-20 bg-slate-900/90 backdrop-blur-md p-3 rounded-2xl border border-white/10 text-white text-[11px] font-bold space-y-1.5 shadow-lg pointer-events-none">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-brand inline-block shadow-sm shadow-brand"></span>
+              <span>برج بث 4G LTE نشط</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-teal-400/40 border border-brand inline-block"></span>
+              <span>نطاق التغطية القوية (2.5 كم)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة تفاصيل البرج المختار -->
+        <div class="lg:col-span-4 space-y-4">
+          
+          <div id="selectedTowerCard" class="bg-white p-5 rounded-3xl border border-slate-200 shadow-md space-y-4">
+            
+            <div class="flex items-start justify-between border-b border-slate-100 pb-3">
+              <div>
+                <span class="text-[10px] text-brand font-extrabold bg-teal-50 px-2 py-0.5 rounded-md border border-teal-100 block w-max mb-1">
+                  محطة بث رئيسية
+                </span>
+                <h3 id="cardTowerName" class="text-lg font-black text-slate-900">برج جبل شمسان المركزي</h3>
+                <p id="cardTowerDistrict" class="text-xs text-slate-500 font-bold mt-0.5">مديرية كريتر وصيرة، عدن</p>
+              </div>
+              <div class="w-10 h-10 rounded-2xl bg-teal-50 text-brand flex items-center justify-center text-lg shrink-0">
+                <i class="fa-solid fa-tower-broadcast"></i>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+              <div class="bg-slate-50 p-3 rounded-xl">
+                <span class="text-slate-400 block text-[10px]">التردد المعتمد:</span>
+                <span id="cardTowerFreq" class="font-mono text-slate-800">1800 MHz (B3)</span>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl">
+                <span class="text-slate-400 block text-[10px]">السرعة القصوى:</span>
+                <span id="cardTowerSpeed" class="text-brand font-black">20 Mbps</span>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl">
+                <span class="text-slate-400 block text-[10px]">قطر التغطية:</span>
+                <span id="cardTowerRange" class="text-slate-800">3.5 كم دائري</span>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl">
+                <span class="text-slate-400 block text-[10px]">حالة المحطة:</span>
+                <span id="cardTowerStatus" class="text-emerald-600 font-black">● متصل ومستقر</span>
+              </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-3">
+              <span class="text-[11px] text-slate-400 font-bold block mb-1">المناطق والأحياء المغطاة:</span>
+              <p id="cardTowerCoverage" class="text-xs text-slate-700 font-bold leading-relaxed bg-slate-50 p-3 rounded-xl">
+                كريتر بالكامل، حي شعب العيدروس، قلعة صيرة، جبل البادري، محيط البنك المركزي، والواجهة البحرية.
+              </p>
+            </div>
+
+            <!-- مؤشر جودة الإشارة التقريبية -->
+            <div class="bg-teal-50/70 p-3 rounded-2xl border border-teal-100 text-xs font-bold text-teal-900 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-signal text-brand text-base"></i>
+                <span>قوة الإشارة المتوقعة:</span>
+              </div>
+              <span class="text-brand font-black text-sm">ممتازة (5/5)</span>
+            </div>
+
+          </div>
+
+          <!-- بطاقة سريعة للاستفسار عن تغطية موقع غير مدرج -->
+          <div class="bg-gradient-to-r from-teal-900 to-slate-900 text-white p-5 rounded-3xl shadow-md text-xs font-bold space-y-2">
+            <h4 class="font-black text-sm text-accent flex items-center gap-1.5">
+              <i class="fa-solid fa-headset"></i>
+              <span>هل موقعك خارج التغطية؟</span>
+            </h4>
+            <p class="text-slate-300 font-normal leading-relaxed">
+              تعمل فرق عدن نت الهندسية على تدشين محطات جديدة لتوسيع التغطية. يمكنك التواصل مع الدعم الفني للاستعلام عن خطة إدخال الخدمة لمنطقتك.
+            </p>
+            <a href="tel:+9672241401" class="inline-block mt-1 text-teal-300 hover:underline">
+              الاتصال بالدعم الفني: 2241401 2 967+
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- بطاقات المحافظات الأربع السابقة محسّنة -->
+      <div class="grid md:grid-cols-4 gap-6 text-center mt-12">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand/40 transition-all">
+          <i class="fa-solid fa-location-dot text-brand text-2xl mb-2"></i>
+          <h4 class="font-black text-slate-900">محافظة عدن</h4>
+          <p class="text-xs text-slate-500 mt-1">تغطية شاملة في المعلا، كريتر، خورمكسر، المنصورة، الشيخ عثمان، والبريقة</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand/40 transition-all">
+          <i class="fa-solid fa-location-dot text-brand text-2xl mb-2"></i>
+          <h4 class="font-black text-slate-900">حضرموت - المكلا</h4>
+          <p class="text-xs text-slate-500 mt-1">تشغيل محطات الجيل الرابع في مدينة المكلا وضواحيها الحيوية</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand/40 transition-all">
+          <i class="fa-solid fa-location-dot text-brand text-2xl mb-2"></i>
+          <h4 class="font-black text-slate-900">محافظة لحج</h4>
+          <p class="text-xs text-slate-500 mt-1">تفعيل الخدمة في الحوطة وتبن ومناطق إضافية</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand/40 transition-all">
+          <i class="fa-solid fa-location-dot text-brand text-2xl mb-2"></i>
+          <h4 class="font-black text-slate-900">محافظة أبين</h4>
+          <p class="text-xs text-slate-500 mt-1">تغطية 4G في زنجبار وجعار مع استمرار التوسعة</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 8. قسم المشكلات الشائعة (الدعم الذاتي للمودم - المطابق للأصل) ================= -->
+  <section id="issues" class="py-16 bg-white border-b border-slate-100 reveal-box">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-black text-brand">المشكلات الشائعة</h2>
+        <p class="text-slate-600 text-sm mt-2 font-bold">حلول وإرشادات المشكلات التقنية الأكثر تكراراً للمودم</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- مشكلة 1 -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleIssue('faq1')" class="w-full p-4 text-right font-extrabold text-slate-800 flex justify-between items-center bg-slate-50 hover:bg-slate-100">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-question text-brand"></i>
+              <span>عمل المودم بشكل طبيعي و عدم وجود أنترنت</span>
+            </span>
+            <i id="faq1-icon" class="fa fa-chevron-down text-slate-400"></i>
+          </button>
+          <div id="faq1" class="hidden p-5 text-sm text-slate-600 bg-white border-t border-slate-100 space-y-2">
+            <p>1. تأكد أولاً من توفر رصيد بالباقة عبر الضغط على <strong>الاستعلام عن الرصيد</strong>.</p>
+            <p>2. افصل المودم عن الكهرباء وأعد توصيله بعد 30 ثانية.</p>
+            <p>3. تأكد من ثبات لمبة LTE باللون الأزرق أو الأخضر المشير لجودة الإشارة.</p>
+          </div>
+        </div>
+
+        <!-- مشكلة 2 -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleIssue('faq2')" class="w-full p-4 text-right font-extrabold text-slate-800 flex justify-between items-center bg-slate-50 hover:bg-slate-100">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-question text-brand"></i>
+              <span>إعدادات تفعيل الهوائي للمودم</span>
+            </span>
+            <i id="faq2-icon" class="fa fa-chevron-down text-slate-400"></i>
+          </button>
+          <div id="faq2" class="hidden p-5 text-sm text-slate-600 bg-white border-t border-slate-100 space-y-2">
+            <p>عند تركيب أنتينا خارجية لتقوية الاستقبال:</p>
+            <p>ادخل لصفحة ضبط المودم من المتصفح (192.168.0.1)، ثم توجه إلى <strong>Antenna Settings</strong> وغيّر الخيار إلى <strong>External Antenna</strong> واحفظ الإعدادات.</p>
+          </div>
+        </div>
+
+        <!-- مشكلة 3 -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleIssue('faq3')" class="w-full p-4 text-right font-extrabold text-slate-800 flex justify-between items-center bg-slate-50 hover:bg-slate-100">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-question text-brand"></i>
+              <span>إعدادات ضبط المصنع للمودم</span>
+            </span>
+            <i id="faq3-icon" class="fa fa-chevron-down text-slate-400"></i>
+          </button>
+          <div id="faq3" class="hidden p-5 text-sm text-slate-600 bg-white border-t border-slate-100 space-y-2">
+            <p>اضغط بدبوس على زر Reset الموجود خلف المودم لمدة 10 ثوانٍ متتالية حتى تعيد كافة الأضواء الوميض، وسيعود المودم لكلمة السر الافتراضية المكتوبة على الملصق.</p>
+          </div>
+        </div>
+
+        <!-- مشكلة 4 -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleIssue('faq4')" class="w-full p-4 text-right font-extrabold text-slate-800 flex justify-between items-center bg-slate-50 hover:bg-slate-100">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-question text-brand"></i>
+              <span>تحديث المودم لحل مشكلة البروفايل</span>
+            </span>
+            <i id="faq4-icon" class="fa fa-chevron-down text-slate-400"></i>
+          </button>
+          <div id="faq4" class="hidden p-5 text-sm text-slate-600 bg-white border-t border-slate-100 space-y-2">
+            <p>تأكد من ضبط بروفايل نقطة الوصول APN على الاسم الرسمي:</p>
+            <div class="bg-slate-100 p-2 rounded font-mono text-xs text-slate-800">
+              APN Name: AdenNet<br>
+              APN: adennet4g
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+  <!-- ================= 8.1. قسم موقعنا ومراكز خدمة العملاء (Our Location & Branches) ================= -->
+  <section id="locations" class="py-16 bg-white border-b border-slate-200/80 reveal-box">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold text-brand bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-100">
+          مراكزنا وفروعنا المعتمدة
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-3">
+          موقعنا ومراكز خدمة المشتركين
+        </h2>
+        <p class="text-slate-600 text-sm mt-2 font-bold leading-relaxed">
+          يسعدنا استقبالكم في مراكز ومكاتب الخدمة التابعة لشركة عدن نت لتقديم الدعم الفني، إصدار الشرائح، واستبدال البدل فاقد.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- الجانب الأيمن: قائمة واختيار الفروع التفاعلية -->
+        <div class="lg:col-span-5 space-y-3">
+          
+          <div class="text-xs font-bold text-slate-400 mb-2 px-1">اختر مركز الخدمة لعرض التفاصيل:</div>
+
+          <!-- فرع 1: المقر الرئيسي خورمكسر -->
+          <button onclick="selectBranch('khormaksar')" id="branch-btn-khormaksar" class="branch-btn w-full p-4 rounded-2xl border-2 border-brand bg-teal-50/40 text-right flex items-start justify-between transition-all">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-brand text-white flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-building"></i>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-slate-900 text-sm">المقر الرئيسي والإدارة العامة</h4>
+                <p class="text-xs text-slate-500 font-bold mt-0.5">عدن - خورمكسر (جوار الاتصالات)</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-bold text-brand bg-white px-2 py-0.5 rounded-md border border-brand/20 shadow-xs">الفرع الرئيسي</span>
+          </button>
+
+          <!-- فرع 2: المعلا -->
+          <button onclick="selectBranch('mualla')" id="branch-btn-mualla" class="branch-btn w-full p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 text-right flex items-start justify-between transition-all">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-slate-900 text-sm">مركز خدمة المعلا</h4>
+                <p class="text-xs text-slate-500 font-bold mt-0.5">عدن - الشارع الرئيسي (أمام البريد)</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-bold text-slate-400">فرع معتمد</span>
+          </button>
+
+          <!-- فرع 3: المنصورة -->
+          <button onclick="selectBranch('mansoura')" id="branch-btn-mansoura" class="branch-btn w-full p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 text-right flex items-start justify-between transition-all">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-slate-900 text-sm">مركز خدمة المنصورة</h4>
+                <p class="text-xs text-slate-500 font-bold mt-0.5">عدن - شارع القصر (قرب كالتكس)</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-bold text-slate-400">فرع معتمد</span>
+          </button>
+
+          <!-- فرع 4: كريتر -->
+          <button onclick="selectBranch('crater')" id="branch-btn-crater" class="branch-btn w-full p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 text-right flex items-start justify-between transition-all">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-slate-900 text-sm">مركز خدمة كريتر</h4>
+                <p class="text-xs text-slate-500 font-bold mt-0.5">عدن - شارع أروى (السنترال المركزي)</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-bold text-slate-400">فرع معتمد</span>
+          </button>
+
+          <!-- فرع 5: المكلا - حضرموت -->
+          <button onclick="selectBranch('mukalla')" id="branch-btn-mukalla" class="branch-btn w-full p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 text-right flex items-start justify-between transition-all">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <h4 class="font-extrabold text-slate-900 text-sm">مجمع خدمة المكلا</h4>
+                <p class="text-xs text-slate-500 font-bold mt-0.5">حضرموت - شارع الميناء (مجمع الاتصالات)</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">فرع المحافظات</span>
+          </button>
+
+        </div>
+
+        <!-- الجانب الأيسر: تفاصيل الفرع المختار والخريطة التفاعلية -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+          
+          <!-- بطاقة بيانات الفرع التفاعلية -->
+          <div id="branchDetailsCard" class="bg-slate-50 p-6 rounded-3xl border border-slate-200/90 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 pb-4">
+              <div>
+                <h3 id="branchName" class="text-lg font-black text-slate-900">المقر الرئيسي والإدارة العامة - عدن نت</h3>
+                <p id="branchAddress" class="text-xs text-slate-600 font-bold mt-1">
+                  <i class="fa-solid fa-location-dot text-brand ml-1"></i>
+                  العاصمة عدن، مديرية خورمكسر، بجانب مبنى المؤسسة العامة للاتصالات السلكية واللاسلكية
+                </p>
+              </div>
+              <a id="branchDirectionsLink" target="_blank" href="https://maps.google.com/?q=Aden+Net+Khormaksar+Aden+Yemen" class="px-4 py-2 bg-brand hover:bg-brand-dark text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                <span>الاتجاهات</span>
+              </a>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs font-bold text-slate-700">
+              <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-clock text-amber-500 text-base"></i>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">ساعات العمل الرسمية:</span>
+                  <span id="branchHours">الأحد - الخميس (8:00 ص - 2:30 م)</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100">
+                <i class="fa-solid fa-phone text-brand text-base"></i>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">هاتف التواصل والفرع:</span>
+                  <span id="branchPhone" dir="ltr" class="font-mono text-slate-900">+967 2 241401</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <span class="text-[11px] text-slate-500 font-bold block mb-1.5">الخدمات المتوفرة في هذا المركز:</span>
+              <div id="branchServices" class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-teal-50 text-brand px-2.5 py-1 rounded-lg border border-teal-100 font-bold">إصدار وتسليم الشرائح</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-lg border border-blue-100 font-bold">بدل فاقد وتالف</span>
+                <span class="bg-amber-50 text-amber-700 px-2.5 py-1 rounded-lg border border-amber-100 font-bold">صيانة وضبط المودم</span>
+                <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-bold">شحن الرصيد والاشتراكات</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- تضمين خريطة الموقع التفاعلية (Google Maps Embed) -->
+          <div class="rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md relative min-h-[300px] h-[320px] bg-slate-100">
+            <iframe 
+              id="branchMapIframe"
+              class="w-full h-full border-0" 
+              src="https://maps.google.com/maps?q=12.8256,45.0345&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            
+            <div class="absolute bottom-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200 text-[11px] font-bold text-slate-800 shadow-sm flex items-center gap-1.5 pointer-events-none">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>خريطة موقع الفرع مباشرة</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 9. قسم الملصقات والتحميل (section-id-1541922002667) ================= -->
+  <section class="py-12 bg-slate-50 border-b border-slate-200/80 reveal-box">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div>
+          <h4 class="text-2xl font-black text-brand underline decoration-brand/30 underline-offset-8">
+            أحلى المصقات حملها الان :
+          </h4>
+          <p class="text-xs text-slate-500 font-bold mt-1">حمل ملصقات وشعارات عدن نت الترويجية الرسمية</p>
+        </div>
+
+        <!-- معاينة شارات الملصقات الأصلية كما في كود الموقع الأصلي -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <img class="max-h-14 w-auto object-contain" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/11/11/untitled-1.png" alt="Sticker 1" onerror="this.style.display='none'">
+          <img class="max-h-14 w-auto object-contain" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/11/11/4g.png" alt="4G Sticker" onerror="this.style.display='none'">
+          <img class="max-h-14 w-auto object-contain" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/11/11/go.png" alt="Go Sticker" onerror="this.style.display='none'">
+          <img class="max-h-14 w-auto object-contain" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/11/11/-1.png" alt="Aden Net Sticker" onerror="this.style.display='none'">
+          <img class="max-h-14 w-auto object-contain" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/2018/11/11/mor1.png" alt="Speed Sticker" onerror="this.style.display='none'">
+        </div>
+
+        <a href="https://web.archive.org/web/20260430134245/https://www.adennet4g.net/media/attachments/2018/11/11/stickers.zip" download class="px-6 py-3 bg-brand hover:bg-brand-dark text-white font-extrabold rounded-2xl shadow-md transition-all flex items-center gap-2 text-sm whitespace-nowrap">
+          <span>أنقر هنا</span>
+          <i class="fa fa-arrow-circle-down"></i>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 10. قسم القاع الأصلي (sp-bottom) ================= -->
+  <section id="sp-bottom" class="border-b border-slate-200 reveal-box">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        
+        <!-- العمود 1: من نحن (sp-bottom1) -->
+        <div class="md:col-span-4 space-y-4">
+          <h3 class="text-xl font-black text-brand pb-2 border-b-2 border-brand/20 inline-block">
+            من نحن
+          </h3>
+          <p class="text-slate-700 text-sm leading-relaxed font-bold text-justify">
+            عدن نت هي مزود حكومي لخدمة الإنترنت تعمل على تزويد خدمة الإنترنت بتقنية الجيل الرابع المعروفة عالمياً و تهدف إلى تقديم خدمة الإنترنت السلكي و اللاسلكي بشكل متطور يواكب التطور العالمي في تقديم خدمة الإنترنت و تراسل المعطيات.
+          </p>
+        </div>
+
+        <!-- العمود 2: أخر الأخبار (sp-bottom2) -->
+        <div class="md:col-span-5 space-y-4" id="news">
+          <h3 class="text-xl font-black text-brand pb-2 border-b-2 border-brand/20 inline-block">
+            أخر الأخبار
+          </h3>
+          <div class="space-y-4 text-sm font-bold">
+            
+            <div class="border-b border-slate-100 pb-3">
+              <a href="#" class="text-slate-800 hover:text-brand block transition-colors leading-snug">
+                وكيل وزارة الاتصالات ونائب مدير عام عدن نت يطلعان على تشغيل الخدمة بمحافظتي أبين ولحج
+              </a>
+              <span class="text-xs text-slate-400 block mt-1">04 نيسان/أبريل 2023</span>
+            </div>
+
+            <div class="border-b border-slate-100 pb-3">
+              <a href="#" class="text-slate-800 hover:text-brand block transition-colors leading-snug">
+                الوزير العوج والمحافظ بن ماضي يدشنان خدمة عدن نت بمدينة المكلا
+              </a>
+              <span class="text-xs text-slate-400 block mt-1">07 آذار/مارس 2023</span>
+            </div>
+
+            <div>
+              <a href="#" class="text-slate-800 hover:text-brand block transition-colors leading-snug">
+                مصدر في عدن نت يكشف عن قرب تدشين الخدمة في عدد من المحافظات المحررة
+              </a>
+              <span class="text-xs text-slate-400 block mt-1">06 أيار 2022</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- العمود 3: شركائنا (sp-bottom3) -->
+        <div class="md:col-span-3 space-y-4">
+          <h3 class="text-xl font-black text-brand pb-2 border-b-2 border-brand/20 inline-block">
+            شركائنا
+          </h3>
+          <ul class="space-y-3 text-sm font-bold">
+            <li>
+              <a href="http://www.stc.com.sa" target="_blank" class="text-slate-700 hover:text-brand flex items-center gap-2 transition-colors">
+                <i class="fa fa-caret-left text-brand"></i>
+                <span>الاتصالات السعودية STC</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.etisalat.ae" target="_blank" class="text-slate-700 hover:text-brand flex items-center gap-2 transition-colors">
+                <i class="fa fa-caret-left text-brand"></i>
+                <span>اتصالات</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="pt-4 border-t border-slate-100">
+            <span class="text-xs text-slate-400 block">خدمة العملاء على مدار 24 ساعة:</span>
+            <span class="text-sm font-bold text-brand" dir="ltr">+967 2 241401</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 11. الفوتر النهائي (sp-footer) ================= -->
+  <footer id="sp-footer" class="py-5 text-white text-center text-sm font-bold">
+    <div class="max-w-7xl mx-auto px-4">
+      <span>© 2026 كل الحقوق محفوظة عدن نت.</span>
+    </div>
+  </footer>
+
+  <!-- ================= 12. القائمة الجانبية للجوال (Offcanvas Menu) ================= -->
+  <div id="offcanvasMenu" class="fixed inset-0 z-50 hidden">
+    <!-- خلفية داكنة -->
+    <div onclick="closeOffcanvas()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    
+    <!-- اللوحة المنزلقة -->
+    <div class="fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-50 p-6 shadow-2xl overflow-y-auto space-y-6">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <span class="font-black text-brand text-lg">قائمة عدن نت</span>
+        <button onclick="closeOffcanvas()" class="text-slate-400 hover:text-slate-700 text-xl" aria-label="إغلاق">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+
+      <!-- مربع البحث المطابق لـ Joomla Search في الأصل -->
+      <div class="relative">
+        <input type="text" placeholder="البحث..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand">
+        <i class="fa fa-search absolute left-3 top-3 text-slate-400"></i>
+      </div>
+
+      <nav class="space-y-1 text-sm font-bold text-slate-700">
+        <a href="#home" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg text-brand bg-brand-light/40">الرئيسية</a>
+        <a href="#news" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">اخبارنا</a>
+        <a href="#services" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">خدماتنا والأسعار</a>
+        <a href="#coverage" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">التغطية والمناطق</a>
+        <a href="#locations" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">موقعنا ومراكز الخدمة</a>
+        <a href="#issues" onclick="closeOffcanvas()" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">المشكلات الشائعة</a>
+        
+        <div class="pt-3 pb-1 border-t border-slate-100 text-xs font-black text-slate-400 px-3">الخدمات الإلكترونية الذاتية:</div>
+        
+        <a href="services.html" class="block py-2 px-3 rounded-lg text-brand hover:bg-teal-50 flex items-center gap-2 font-black">
+          <i class="fa-solid fa-layer-group text-brand"></i>
+          <span>بوابة الخدمات الإلكترونية</span>
+        </a>
+        <a href="balance.html" class="block py-2.5 px-3 rounded-lg text-teal-700 bg-teal-50 flex items-center gap-2 font-black">
+          <i class="fa-solid fa-receipt text-brand"></i>
+          <span>الاستعلام عن الرصيد (SSP)</span>
+        </a>
+        <a href="user-data.html" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+          <i class="fa-solid fa-id-card text-brand"></i>
+          <span>استعلام عن بيانات المستخدم</span>
+        </a>
+        <a href="new-sim.html" class="block py-2 px-3 rounded-lg text-amber-600 hover:bg-amber-50 flex items-center gap-2">
+          <i class="fa-solid fa-sim-card text-amber-500"></i>
+          <span>التقديم لشريحة 4G جديدة</span>
+        </a>
+        <a href="sim-replacement.html" class="block py-2 px-3 rounded-lg text-blue-600 hover:bg-blue-50 flex items-center gap-2">
+          <i class="fa-solid fa-repeat text-blue-500"></i>
+          <span>تقديم طلب بدل فاقد</span>
+        </a>
+      </nav>
+
+      <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 font-bold space-y-2">
+        <div>هاتف الدعم: <span dir="ltr">+967 2 241401</span></div>
+        <div>البريد: info@adennet4g.net</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= 13. نافذة الاستعلام عن الرصيد المنبثقة (Balance Modal) ================= -->
+  <div id="balanceModal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+    <div onclick="closeBalanceModal()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+    <div onclick="event.stopPropagation()" class="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto transform transition-all">
+      
+      <button onclick="closeBalanceModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-colors">
+        <i class="fa fa-times"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand flex items-center justify-center text-2xl mx-auto mb-3">
+          <i class="fa-solid fa-receipt"></i>
+        </div>
+        <h3 class="text-xl font-black text-slate-900">الاستعلام عن رصيد عدن نت</h3>
+        <p class="text-xs text-slate-500 font-bold mt-1">بوابة الخدمة الذاتية (Self-Service Portal - SSP)</p>
+      </div>
+
+      <form id="balanceForm" onsubmit="handleInquiry(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">رقم الشريحة أو رقم الحساب:</label>
+          <input type="text" id="inquirySim" required placeholder="مثال: 791048291" value="791048291" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+        </div>
+
+        <button type="submit" id="balanceSubmitBtn" class="w-full py-3 bg-brand hover:bg-brand-dark text-white font-black rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>استعلام فوري عن الرصيد</span>
+        </button>
+      </form>
+
+      <!-- نتيجة الاستعلام -->
+      <div id="inquiryResult" class="hidden mt-6 pt-4 border-t border-slate-100 space-y-3 text-xs font-bold">
+        <div class="bg-teal-50 p-4 rounded-2xl border border-teal-200 space-y-2.5">
+          <div class="flex justify-between items-center pb-2 border-b border-teal-200/60">
+            <span class="text-slate-500">رقم الحساب المستعلم عنه:</span>
+            <span id="resBalanceSim" class="font-mono text-brand font-black text-sm">791048291</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">حالة الاشتراك:</span>
+            <span class="text-emerald-600 font-black flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              نشط (4G LTE)
+            </span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">الرصيد المتبقي:</span>
+            <span class="text-2xl font-black text-brand">28.4 GB</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">الباقة المشترك بها:</span>
+            <span class="text-slate-800">باقة 40 جيجابايت الشهرية</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">تاريخ انتهاء الصلاحية:</span>
+            <span class="font-mono text-amber-600">2026/10/24</span>
+          </div>
+        </div>
+
+        <button type="button" onclick="resetBalanceForm()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+          <i class="fa fa-redo"></i>
+          <span>الاستعلام عن رقم آخر</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= 14. نافذة استعلام عن بيانات المستخدم (User Data Modal) ================= -->
+  <div id="userDataModal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+    <div onclick="closeUserDataModal()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+    <div onclick="event.stopPropagation()" class="relative bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto transform transition-all">
+      
+      <button onclick="closeUserDataModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-colors">
+        <i class="fa fa-times"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand flex items-center justify-center text-2xl mx-auto mb-3">
+          <i class="fa-solid fa-id-card"></i>
+        </div>
+        <h3 class="text-xl font-black text-slate-900">استعلام عن بيانات المشترك</h3>
+        <p class="text-xs text-slate-500 font-bold mt-1">بوابة الخدمة الذاتية الموحدة لشركة عدن نت 4G</p>
+      </div>
+
+      <form id="userDataForm" onsubmit="handleUserDataSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">رقم شريحة عدن نت (MSISDN):</label>
+          <input type="text" id="userSimInput" required placeholder="مثال: 791048291" value="791048291" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهوية الوطنية أو جواز السفر (اختياري للتحقق):</label>
+          <input type="text" id="userIdInput" placeholder="أدخل رقم الهوية (اختياري)" value="03010049281" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+        </div>
+
+        <button type="submit" id="userDataSubmitBtn" class="w-full py-3 bg-brand hover:bg-brand-dark text-white font-black rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2">
+          <i class="fa fa-search"></i>
+          <span>استعلام عن البيانات</span>
+        </button>
+      </form>
+
+      <!-- نتيجة استعلام بيانات المشترك -->
+      <div id="userDataResult" class="hidden mt-6 pt-4 border-t border-slate-100 space-y-3">
+        <div class="bg-gradient-to-br from-teal-500/10 via-slate-50 to-teal-500/5 p-5 rounded-2xl border border-brand/20 space-y-3 text-xs">
+          
+          <div class="flex items-center justify-between border-b border-slate-200/70 pb-3">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-bold">اسم المشترك المعتمد:</span>
+              <span class="text-sm font-black text-slate-900">عبدالله محمد قاسم السقاف</span>
+            </div>
+            <span class="bg-emerald-100 text-emerald-700 font-extrabold text-[11px] px-2.5 py-0.5 rounded-full border border-emerald-200">
+              <i class="fa-solid fa-check-circle ml-1"></i> حساب نشط ومفعل
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-slate-700 font-bold">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-normal">رقم الشريحة:</span>
+              <span id="userDataSimRes" class="font-mono text-brand font-black text-sm" dir="ltr">791048291</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block font-normal">رقم الهوية:</span>
+              <span id="userDataIdRes" class="font-mono text-slate-800">03010049281</span>
+            </div>
+            <div class="col-span-2">
+              <span class="text-[10px] text-slate-400 block font-normal">الرقم التسلسلي للشريحة (ICCID):</span>
+              <span class="font-mono text-slate-800 text-[11px]" dir="ltr">899670102948571029F</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-200/60">
+              <span class="text-[10px] text-slate-400 block font-normal">رمز PUK 1:</span>
+              <span class="font-mono text-amber-600 font-black">48192041</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-200/60">
+              <span class="text-[10px] text-slate-400 block font-normal">رمز PUK 2:</span>
+              <span class="font-mono text-amber-600 font-black">83910248</span>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-200/70 pt-3 space-y-1.5 text-xs font-bold text-slate-700">
+            <div class="flex justify-between">
+              <span class="text-slate-500">الباقة المشترك بها:</span>
+              <span class="text-slate-900">باقة 40 جيجابايت (4G LTE)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">الرصيد المتبقي:</span>
+              <span class="font-black text-brand text-sm">28.4 GB</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">تاريخ التجديد والانتهاء:</span>
+              <span class="font-mono text-amber-600">2026/10/24</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">المركز التابع له:</span>
+              <span class="text-slate-800">فرع خورمكسر الرئيسي - عدن</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex gap-2">
+          <button type="button" onclick="resetUserDataForm()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+            <i class="fa fa-redo"></i>
+            <span>استعلام عن رقم آخر</span>
+          </button>
+          <button type="button" onclick="closeUserDataModal()" class="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-colors">
+            إغلاق
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= 15. نافذة التقديم لشريحة جديدة (New SIM Modal) ================= -->
+  <div id="newSimModal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+    <div onclick="closeNewSimModal()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+    <div onclick="event.stopPropagation()" class="relative bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto transform transition-all">
+      
+      <button onclick="closeNewSimModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-colors">
+        <i class="fa fa-times"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mx-auto mb-3">
+          <i class="fa-solid fa-sim-card"></i>
+        </div>
+        <h3 class="text-xl font-black text-slate-900">طلب وحجز شريحة 4G جديدة</h3>
+        <p class="text-xs text-slate-500 font-bold mt-1">التقديم المباشر والتسجيل للحصول على خدمة عدن نت</p>
+      </div>
+
+      <form id="newSimForm" onsubmit="handleNewSimSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الرباعي الكامل (مطابق للهوية):</label>
+          <input type="text" id="newSimName" required placeholder="أدخل اسمك الرباعي" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهاتف البديل للتواصل:</label>
+            <input type="tel" id="newSimPhone" required placeholder="7xxxxxxxx" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">رقم البطاقة الشخصية / الجواز:</label>
+            <input type="text" id="newSimNationalId" required placeholder="أدخل رقم الهوية" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">المحافظة والمديرية:</label>
+            <select id="newSimCity" required class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+              <option value="عدن - خورمكسر">عدن - خورمكسر</option>
+              <option value="عدن - المعلا">عدن - المعلا</option>
+              <option value="عدن - كريتر">عدن - كريتر</option>
+              <option value="عدن - المنصورة">عدن - المنصورة</option>
+              <option value="عدن - الشيخ عثمان">عدن - الشيخ عثمان</option>
+              <option value="حضرموت - المكلا">حضرموت - المكلا</option>
+              <option value="محافظة لحج - الحوطة">محافظة لحج - الحوطة</option>
+              <option value="محافظة أبين - زنجبار">محافظة أبين - زنجبار</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">نوع الطلب:</label>
+            <select id="newSimType" required class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+              <option value="شريحة فقط (SIM Only)">شريحة فقط (3,000 ريال)</option>
+              <option value="شريحة + مودم مكتبي ثابت">شريحة + مودم مكتبي ثابت</option>
+              <option value="شريحة + جهاز ماي فاي محمول">شريحة + ماي فاي محمول</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">الباقة الشهرية المبدئية:</label>
+          <select id="newSimPackage" required class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+            <option value="باقة 20 جيجا (3,000 ريال)">باقة 20 جيجا (3,000 ريال يمني)</option>
+            <option value="باقة 40 جيجا (6,000 ريال)" selected>باقة 40 جيجا (6,000 ريال يمني) - الأكثر طلباً</option>
+            <option value="باقة 60 جيجا (9,000 ريال)">باقة 60 جيجا (9,000 ريال يمني)</option>
+            <option value="باقة 80 جيجا (12,000 ريال)">باقة 80 جيجا (12,000 ريال يمني)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">مركز الاستلام المفضل:</label>
+          <select id="newSimCenter" required class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+            <option value="فرع خورمكسر الرئيسي (عدن)">فرع خورمكسر الرئيسي (عدن)</option>
+            <option value="مركز خدمة المعلا (عدن)">مركز خدمة المعلا (عدن)</option>
+            <option value="مركز خدمة المنصورة (عدن)">مركز خدمة المنصورة (عدن)</option>
+            <option value="مركز خدمة كريتر (عدن)">مركز خدمة كريتر (عدن)</option>
+            <option value="مجمع خدمة المكلا (حضرموت)">مجمع خدمة المكلا (حضرموت)</option>
+          </select>
+        </div>
+
+        <button type="submit" id="newSimSubmitBtn" class="w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-black rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2">
+          <i class="fa fa-paper-plane"></i>
+          <span>تأكيد طلب وحجز الشريحة</span>
+        </button>
+      </form>
+
+      <!-- نتيجة تقديم طلب الشريحة -->
+      <div id="newSimResult" class="hidden mt-6 pt-4 border-t border-slate-100 space-y-3">
+        <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 space-y-3 text-xs">
+          
+          <div class="text-center pb-2 border-b border-amber-200">
+            <span class="w-10 h-10 rounded-full bg-emerald-500 text-white inline-flex items-center justify-center text-lg mb-1.5">
+              <i class="fa fa-check"></i>
+            </span>
+            <h4 class="text-base font-black text-slate-900">تم تسجيل حجز الشريحة بنجاح!</h4>
+            <p class="text-[11px] text-slate-500 font-bold">تم تخصيص موعد للمطابقة واستلام الشريحة</p>
+          </div>
+
+          <div class="bg-white p-3 rounded-xl border border-amber-200/80 space-y-1.5 font-bold text-slate-700">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">رقم الحجز المسبق:</span>
+              <span id="resSimCode" class="font-mono text-base font-black text-amber-600">ADEN-SIM-2026-55219</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">اسم صاحب الطلب:</span>
+              <span id="resSimName" class="text-slate-900">--</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">تاريخ موعد الاستلام:</span>
+              <span class="text-brand font-black">2026/10/06 (خلال أوقات الدوام الرسمي)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">المركز المعتمد:</span>
+              <span id="resSimCenter" class="text-slate-900">--</span>
+            </div>
+          </div>
+
+          <div class="text-[11px] text-slate-600 font-bold space-y-1 bg-amber-100/60 p-3 rounded-xl">
+            <div class="text-slate-800 font-black mb-1">المستندات المطلوبة عند الحضور:</div>
+            <div>• أصل البطاقة الشخصية سارية المفعول لصاحب الطلب.</div>
+            <div>• صورة شمسية ملونة حديثة (4×6).</div>
+            <div>• سداد رسوم الشريحة والباقة المقررة بالفرع.</div>
+          </div>
+
+        </div>
+
+        <div class="flex gap-2">
+          <button type="button" onclick="resetNewSimForm()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+            <i class="fa fa-plus"></i>
+            <span>تقديم طلب حجز جديد</span>
+          </button>
+          <button type="button" onclick="closeNewSimModal()" class="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-colors">
+            إغلاق
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= 16. نافذة تقديم طلب بدل فاقد (Lost SIM Replacement Modal) ================= -->
+  <div id="simReplacementModal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4">
+    <div onclick="closeSimReplacementModal()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+    <div onclick="event.stopPropagation()" class="relative bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto transform transition-all">
+      
+      <button onclick="closeSimReplacementModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-colors">
+        <i class="fa fa-times"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mx-auto mb-3">
+          <i class="fa-solid fa-repeat"></i>
+        </div>
+        <h3 class="text-xl font-black text-slate-900">تقديم طلب بدل فاقد / تالف</h3>
+        <p class="text-xs text-slate-500 font-bold mt-1">إصدار شريحة بديلة مع الاحتفاظ بنفس رقم الحساب والباقة</p>
+      </div>
+
+      <form id="simReplacementForm" onsubmit="handleSimReplacementSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل لصاحب الشريحة (مطابق للعقد):</label>
+          <input type="text" id="repName" required placeholder="أدخل اسم المشترك المسجل" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">رقم شريحة عدن نت المفقودة:</label>
+            <input type="text" id="repSimNumber" required placeholder="79xxxxxxx" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">رقم هاتف بديل للتواصل:</label>
+            <input type="tel" id="repContactPhone" required placeholder="7xxxxxxxx" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">رقم البطاقة الشخصية / الجواز:</label>
+            <input type="text" id="repNationalId" required placeholder="أدخل رقم الهوية" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono focus:outline-none focus:border-brand">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">سبب الاستبدال:</label>
+            <select id="repReason" required class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+              <option value="فقدان وضياع الشريحة">فقدان وضياع الشريحة</option>
+              <option value="تلف الشريحة / لا تقرأ بالمودم">تلف الشريحة / لا تقرأ بالمودم</option>
+              <option value="سرقة المودم والشريحة">سرقة المودم والشريحة</option>
+              <option value="ترقية الشريحة">ترقية وتغيير المقاس</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">المركز المفضل لاستلام الشريحة البديلة:</label>
+          <select id="repCenter" required class="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-brand">
+            <option value="المقر الرئيسي والإدارة العامة - خورمكسر">المقر الرئيسي والإدارة العامة - خورمكسر</option>
+            <option value="مركز خدمة المعلا (عدن)">مركز خدمة المعلا (عدن)</option>
+            <option value="مركز خدمة المنصورة (عدن)">مركز خدمة المنصورة (عدن)</option>
+            <option value="مركز خدمة كريتر (عدن)">مركز خدمة كريتر (عدن)</option>
+            <option value="مجمع خدمة المكلا (حضرموت)">مجمع خدمة المكلا (حضرموت)</option>
+          </select>
+        </div>
+
+        <div class="flex items-start gap-2 pt-1">
+          <input type="checkbox" id="repTerms" required class="mt-1 accent-brand">
+          <label for="repTerms" class="text-xs text-slate-600 font-bold leading-relaxed">
+            أقر بأنني المالك الرسمي والمخول نظاماً لهذه الشريحة، وأتحمل المسؤولية القانونية عن صحة البيانات.
+          </label>
+        </div>
+
+        <button type="submit" id="repSubmitBtn" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2">
+          <i class="fa fa-repeat"></i>
+          <span>إرسال طلب البدل فاقد</span>
+        </button>
+      </form>
+
+      <!-- نتيجة تقديم طلب البدل فاقد -->
+      <div id="simReplacementResult" class="hidden mt-6 pt-4 border-t border-slate-100 space-y-3">
+        <div class="bg-blue-50 p-5 rounded-2xl border border-blue-200 space-y-3 text-xs">
+          
+          <div class="text-center pb-2 border-b border-blue-200">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white inline-flex items-center justify-center text-lg mb-1.5">
+              <i class="fa fa-check"></i>
+            </span>
+            <h4 class="text-base font-black text-slate-900">تم تسجيل طلب البدل فاقد بنجاح!</h4>
+            <p class="text-[11px] text-slate-500 font-bold">تم التحقق المبدئي وجاري تجهيز الشريحة البديلة</p>
+          </div>
+
+          <div class="bg-white p-3 rounded-xl border border-blue-200 space-y-1.5 font-bold text-slate-700">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">رقم مرجع الطلب:</span>
+              <span id="resRepCode" class="font-mono text-base font-black text-blue-600">REQ-REP-2026-89104</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">رقم الشريحة المستبدلة:</span>
+              <span id="resRepSim" class="font-mono text-slate-900" dir="ltr">--</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">حالة الطلب:</span>
+              <span class="text-emerald-600 font-extrabold">معتمد مبدئياً • بانتظار الحضور للفرع</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">مركز الاستلام:</span>
+              <span id="resRepCenter" class="text-slate-900">--</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">رسوم الاستبدال المقررة:</span>
+              <span class="text-slate-900 font-mono">2,000 ريال يمني</span>
+            </div>
+          </div>
+
+          <div class="text-[11px] text-slate-600 font-bold bg-blue-100/60 p-3 rounded-xl space-y-1">
+            <div class="text-slate-900 font-black mb-1">تعليمات الاستلام:</div>
+            <div>• يرجى إحضار أصل البطاقة الشخصية المسجل بها العقد.</div>
+            <div>• سيتم إيقاف الشريحة القديمة فور تسليم وتفعيل الشريحة البديلة الجديدة.</div>
+          </div>
+
+        </div>
+
+        <div class="flex gap-2">
+          <button type="button" onclick="resetSimReplacementForm()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+            <i class="fa fa-plus"></i>
+            <span>تقديم طلب استبدال آخر</span>
+          </button>
+          <button type="button" onclick="closeSimReplacementModal()" class="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-colors">
+            إغلاق
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- أكواد التفاعل بالجافاسكربت -->
+  <script>
+    // بيانات السلايدر
+    const slides = [
+      {
+        counter: "01 / 04",
+        title: "أسرع خدمة إنترنت <br> بتقنية <span class='text-brand'>الجيل الرابع 4G</span>",
+        desc: "عدن نت توفر أحدث شبكة إنترنت لاسلكي فائق السرعة بسرعة تصل حتى 20 ميجابايت/ثانية. بدون أسلاك أو تمديدات أرضية، فقط وصّل المودم وانطلق!",
+        image: "https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/SLI.png"
+      },
+      {
+        counter: "02 / 04",
+        title: "تغطية موسعة تشمل <br> <span class='text-accent'>عدن والمحافظات</span>",
+        desc: "محطات بث حديثة تغطي العاصمة المؤقتة عدن، المكلا في حضرموت، ولحج وأبين مع استمرار التوسعة في باقي المحافظات المحررة.",
+        image: "https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/MAP.png"
+      },
+      {
+        counter: "03 / 04",
+        title: "مودم 4G فائق الأداء <br> <span class='text-brand'>بسهولة إعداد فورية</span>",
+        desc: "كل ما عليك هو توصيل مودم عدن نت لأقرب قابس كهربائي للاستمتاع باتصال إنترنت ثابت ومستمر على مدار الساعة.",
+        image: "https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/00a4e81b-97bd-41f9-a858-40cc92b59c28.jpg"
+      },
+      {
+        counter: "04 / 04",
+        title: "شعار وهوية عدن نت <br> <span class='text-brand'>بتقنية 4G LTE</span>",
+        desc: "الشبكة الحكومية الأولى لخدمات الإنترنت عالي السرعة وتراسل المعطيات في اليمن بأحدث المواصفات العالمية.",
+        image: "assets/gif-logo1.gif"
+      }
+    ];
+
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    function renderSlide(index) {
+      document.getElementById('slideTitle').innerHTML = slides[index].title;
+      document.getElementById('slideDesc').innerText = slides[index].desc;
+      const counterEl = document.getElementById('slideCounter');
+      if (counterEl && slides[index].counter) {
+        counterEl.innerText = slides[index].counter;
+      }
+      const slideImg = document.getElementById('slideImage');
+      if (slideImg && slides[index].image) {
+        slideImg.style.opacity = '0';
+        setTimeout(() => {
+          slideImg.src = slides[index].image;
+          slideImg.style.opacity = '1';
+        }, 150);
+      }
+      resetSlideTimer();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      renderSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      renderSlide(currentSlide);
+    }
+
+    function resetSlideTimer() {
+      const progressBar = document.getElementById('slideProgressBar');
+      if (progressBar) {
+        progressBar.style.animation = 'none';
+        progressBar.offsetHeight; /* Trigger reflow */
+        progressBar.style.animation = 'slideCountdown 7s linear infinite';
+      }
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 7000);
+    }
+
+    // تشغيل السلايدر التلقائي عند بدء الصفحة
+    slideInterval = setInterval(nextSlide, 7000);
+
+    // ============= أنميشن الظهور التدريجي السلس عند التمرير (Scroll Reveal) =============
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    document.querySelectorAll('.reveal-box').forEach(el => {
+      observer.observe(el);
+    });
+
+    // القائمة المتنقلة للجوال (Offcanvas)
+    const offcanvasMenu = document.getElementById('offcanvasMenu');
+    document.getElementById('offcanvasToggle').addEventListener('click', () => {
+      offcanvasMenu.classList.remove('hidden');
+    });
+
+    function closeOffcanvas() {
+      offcanvasMenu.classList.add('hidden');
+    }
+
+    // أكورديون المشكلات الشائعة
+    function toggleIssue(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(id + '-icon');
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    // ============= التحكم بالقوائم المنسدلة في شريط التنقل (Nav Dropdowns) =============
+    function toggleNavDropdown(dropdownId, e) {
+      if (e) {
+        if (e.stopPropagation) e.stopPropagation();
+        if (e.preventDefault) e.preventDefault();
+      }
+      const targetMenu = document.getElementById(dropdownId);
+      if (!targetMenu) return;
+
+      const isCurrentlyOpen = targetMenu.classList.contains('nav-open');
+
+      closeAllNavDropdowns();
+
+      if (!isCurrentlyOpen) {
+        targetMenu.classList.add('nav-open');
+        targetMenu.classList.remove('hidden');
+      }
+    }
+
+    function closeAllNavDropdowns() {
+      document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+        menu.classList.remove('nav-open');
+        menu.classList.add('hidden');
+      });
+      if (document.activeElement && document.activeElement.blur) {
+        document.activeElement.blur();
+      }
+    }
+
+    // إغلاق القوائم المنسدلة عند النقر في أي مكان خارجها
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.relative.group')) {
+        closeAllNavDropdowns();
+      }
+    });
+
+    // ============= فتح النوافذ من قائمة الجوال دون ارتداد لمس =============
+    function openFromOffcanvas(modalId) {
+      closeOffcanvas();
+      setTimeout(() => {
+        showModal(modalId);
+      }, 90);
+    }
+
+    // ============= إدارة النوافذ المنبثقة للعمليات (Modals Manager) =============
+    const ALL_MODALS = ['balanceModal', 'userDataModal', 'newSimModal', 'simReplacementModal'];
+
+    function showModal(modalId, e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      closeAllNavDropdowns();
+      ALL_MODALS.forEach(id => {
+        if (id !== modalId) {
+          const m = document.getElementById(id);
+          if (m) {
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+          }
+        }
+      });
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function hideModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+      const anyStillOpen = ALL_MODALS.some(id => {
+        const m = document.getElementById(id);
+        return m && !m.classList.contains('hidden');
+      });
+      if (!anyStillOpen) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    // إغلاق النوافذ عند الضغط على مفتاح Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        ALL_MODALS.forEach(id => hideModal(id));
+        if (typeof closeOffcanvas === 'function') closeOffcanvas();
+      }
+    });
+
+    // 1. نافذة الاستعلام عن الرصيد
+    function openBalanceModal(e) {
+      showModal('balanceModal', e);
+    }
+
+    function closeBalanceModal() {
+      hideModal('balanceModal');
+    }
+
+    function handleInquiry(e) {
+      e.preventDefault();
+      const btn = document.getElementById('balanceSubmitBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> <span>جاري الاستعلام...</span>`;
+      btn.disabled = true;
+
+      const simVal = document.getElementById('inquirySim').value.trim() || '791048291';
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('resBalanceSim').innerText = simVal;
+        document.getElementById('inquiryResult').classList.remove('hidden');
+      }, 350);
+    }
+
+    function resetBalanceForm() {
+      document.getElementById('inquiryResult').classList.add('hidden');
+      document.getElementById('inquirySim').focus();
+    }
+
+    // ============= دوال التحكم في الفروع واختيار المراكز (Branches Selector) =============
+    const branchesData = {
+      khormaksar: {
+        name: "المقر الرئيسي والإدارة العامة - عدن نت",
+        address: "العاصمة عدن، مديرية خورمكسر، بجانب مبنى المؤسسة العامة للاتصالات السلكية واللاسلكية",
+        hours: "الأحد - الخميس (8:00 ص - 2:30 م)",
+        phone: "+967 2 241401",
+        map: "https://maps.google.com/maps?q=12.8256,45.0345&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        directions: "https://maps.google.com/?q=Aden+Net+Khormaksar+Aden+Yemen"
+      },
+      mualla: {
+        name: "مركز خدمة المشتركين - المعلا",
+        address: "العاصمة عدن، مديرية المعلا، الشارع الرئيسي، أمام مبنى البريد العام",
+        hours: "فترتين: (8:00 ص - 1:30 م) و (4:30 م - 8:30 م)",
+        phone: "+967 2 241402",
+        map: "https://maps.google.com/maps?q=12.7885,45.0089&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        directions: "https://maps.google.com/?q=Al+Mualla+Aden+Yemen"
+      },
+      mansoura: {
+        name: "مركز خدمة المشتركين - المنصورة",
+        address: "العاصمة عدن، مديرية المنصورة، شارع القصر، قرب جولة كالتكس",
+        hours: "فترتين: (8:00 ص - 1:30 م) و (4:30 م - 8:30 م)",
+        phone: "+967 2 241403",
+        map: "https://maps.google.com/maps?q=12.8550,44.9980&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        directions: "https://maps.google.com/?q=Al+Mansoura+Aden+Yemen"
+      },
+      crater: {
+        name: "مركز خدمة المشتركين - كريتر",
+        address: "العاصمة عدن، مديرية كريتر، شارع أروى، مبنى السنترال المركزي",
+        hours: "الأحد - الخميس (8:00 ص - 2:30 م)",
+        phone: "+967 2 241404",
+        map: "https://maps.google.com/maps?q=12.7797,45.0367&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        directions: "https://maps.google.com/?q=Crater+Aden+Yemen"
+      },
+      mukalla: {
+        name: "مجمع خدمة المشتركين - المكلا (حضرموت)",
+        address: "محافظة حضرموت، مدينة المكلا، شارع الميناء، مجمع الاتصالات المركزي",
+        hours: "الأحد - الخميس (8:00 ص - 2:00 م)",
+        phone: "+967 5 304001",
+        map: "https://maps.google.com/maps?q=14.5367,49.1287&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        directions: "https://maps.google.com/?q=Mukalla+Hadhramaut+Yemen"
+      }
+    };
+
+    function selectBranch(branchId) {
+      const data = branchesData[branchId];
+      if (!data) return;
+
+      document.getElementById('branchName').innerText = data.name;
+      document.getElementById('branchAddress').innerHTML = `<i class="fa-solid fa-location-dot text-brand ml-1"></i> ${data.address}`;
+      document.getElementById('branchHours').innerText = data.hours;
+      document.getElementById('branchPhone').innerText = data.phone;
+      document.getElementById('branchDirectionsLink').href = data.directions;
+      document.getElementById('branchMapIframe').src = data.map;
+
+      // تحديث مظهر الأزرار المحددة
+      document.querySelectorAll('.branch-btn').forEach(btn => {
+        btn.classList.remove('border-2', 'border-brand', 'bg-teal-50/40');
+        btn.classList.add('border-slate-200', 'bg-white');
+      });
+      const activeBtn = document.getElementById('branch-btn-' + branchId);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-slate-200', 'bg-white');
+        activeBtn.classList.add('border-2', 'border-brand', 'bg-teal-50/40');
+      }
+    }
+
+    // ============= 1. استعلام عن بيانات المستخدم =============
+    function openUserDataModal(e) {
+      showModal('userDataModal', e);
+    }
+
+    function closeUserDataModal() {
+      hideModal('userDataModal');
+    }
+
+    function handleUserDataSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('userDataSubmitBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> <span>جاري البحث والتحقق...</span>`;
+      btn.disabled = true;
+
+      const simInput = document.getElementById('userSimInput').value.trim() || '791048291';
+      const idInput = document.getElementById('userIdInput').value.trim() || '03010049281';
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('userDataSimRes').innerText = simInput;
+        document.getElementById('userDataIdRes').innerText = idInput;
+        document.getElementById('userDataResult').classList.remove('hidden');
+      }, 400);
+    }
+
+    function resetUserDataForm() {
+      document.getElementById('userDataResult').classList.add('hidden');
+      document.getElementById('userSimInput').focus();
+    }
+
+    // ============= 2. التقديم لشريحة جديدة =============
+    function openNewSimModal(e) {
+      resetNewSimForm();
+      showModal('newSimModal', e);
+    }
+
+    function closeNewSimModal() {
+      hideModal('newSimModal');
+    }
+
+    function handleNewSimSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('newSimSubmitBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> <span>جاري معالجة وتأكيد الحجز...</span>`;
+      btn.disabled = true;
+
+      const name = document.getElementById('newSimName').value.trim();
+      const center = document.getElementById('newSimCenter').value;
+      const randomCode = 'ADEN-SIM-' + Math.floor(10000 + Math.random() * 90000);
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('resSimCode').innerText = randomCode;
+        document.getElementById('resSimName').innerText = name || 'مشترك جديد';
+        document.getElementById('resSimCenter').innerText = center;
+        document.getElementById('newSimForm').classList.add('hidden');
+        document.getElementById('newSimResult').classList.remove('hidden');
+      }, 500);
+    }
+
+    function resetNewSimForm() {
+      const form = document.getElementById('newSimForm');
+      if (form) {
+        form.classList.remove('hidden');
+        form.reset();
+      }
+      const res = document.getElementById('newSimResult');
+      if (res) res.classList.add('hidden');
+    }
+
+    // ============= 3. تقديم طلب بدل فاقد =============
+    function openSimReplacementModal(e) {
+      resetSimReplacementForm();
+      showModal('simReplacementModal', e);
+    }
+
+    function closeSimReplacementModal() {
+      hideModal('simReplacementModal');
+    }
+
+    function handleSimReplacementSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('repSubmitBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> <span>جاري إرسال الطلب واعتماده...</span>`;
+      btn.disabled = true;
+
+      const simNumber = document.getElementById('repSimNumber').value.trim() || '79xxxxxxx';
+      const center = document.getElementById('repCenter').value;
+      const randomCode = 'REQ-REP-' + Math.floor(10000 + Math.random() * 90000);
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('resRepCode').innerText = randomCode;
+        document.getElementById('resRepSim').innerText = simNumber;
+        document.getElementById('resRepCenter').innerText = center;
+        document.getElementById('simReplacementForm').classList.add('hidden');
+        document.getElementById('simReplacementResult').classList.remove('hidden');
+      }, 500);
+    }
+
+    function resetSimReplacementForm() {
+      const form = document.getElementById('simReplacementForm');
+      if (form) {
+        form.classList.remove('hidden');
+        form.reset();
+      }
+      const res = document.getElementById('simReplacementResult');
+      if (res) res.classList.add('hidden');
+    }
+
+    // ============= خريطة الأبراج ومحطات البث التفاعلية (4G Towers Map) =============
+    const adenTowers = [
+      {
+        id: "shamsan",
+        name: "برج جبل شمسان المركزي",
+        district: "مديرية كريتر وصيرة، عدن",
+        region: "crater",
+        lat: 12.7750,
+        lng: 45.0350,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "3.5 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "كريتر بالكامل، حي شعب العيدروس، قلعة صيرة، جبل البادري، محيط البنك المركزي، والواجهة البحرية."
+      },
+      {
+        id: "khormaksar_hq",
+        name: "محطة ساحل أبين - الإدارة العامة",
+        district: "مديرية خورمكسر، عدن",
+        region: "khormaksar",
+        lat: 12.8256,
+        lng: 45.0345,
+        freq: "1800 MHz (B3) / 700 MHz (B28)",
+        speed: "20 Mbps",
+        range: "3.2 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "خورمكسر، حي السفارات، محيط مطار عدن الدولي، ساحل أبين، وكليات جامعة عدن بخورمكسر."
+      },
+      {
+        id: "caltex",
+        name: "برج جولة كالتكس الرئيسي",
+        district: "مديرية المنصورة، عدن",
+        region: "mansoura",
+        lat: 12.8550,
+        lng: 44.9950,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "3.0 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "مديرية المنصورة، جولة كالتكس، حي ريمي، شارع القصر، ومحيط المنطقة الحرة."
+      },
+      {
+        id: "mualla_port",
+        name: "محطة جبل المعلا والشارع الرئيسي",
+        district: "مديرية المعلا، عدن",
+        region: "crater",
+        lat: 12.7885,
+        lng: 45.0100,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "2.8 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "الشارع الرئيسي بالمعلا، ميناء المعلا، حي الدكة، والشارع الخلفي وصولاً لكبسة."
+      },
+      {
+        id: "sheikh_osman",
+        name: "برج سنترال الشيخ عثمان",
+        district: "مديرية الشيخ عثمان، عدن",
+        region: "mansoura",
+        lat: 12.8750,
+        lng: 45.0150,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "3.2 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "الشيخ عثمان، سوق السيلة، حي الممدارة، عبدالقوي، ومحيط مصعبين."
+      },
+      {
+        id: "tawahi",
+        name: "محطة التواهي وجبل الفتح",
+        district: "مديرية التواهي، عدن",
+        region: "crater",
+        lat: 12.7900,
+        lng: 44.9850,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "2.6 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "مدينة التواهي، حي القلوعة، رأس مربط، جبل الفتح، ورصيف السياح."
+      },
+      {
+        id: "brega",
+        name: "محطة البريقة ومدينة الشعب",
+        district: "مديرية البريقة، عدن",
+        region: "brega",
+        lat: 12.8200,
+        lng: 44.9100,
+        freq: "700 MHz (B28)",
+        speed: "20 Mbps",
+        range: "4.0 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "البريقة، صلاح الدين، مدينة الشعب، الحرم الجامعي الجديد، وكود قرو."
+      },
+      {
+        id: "jabal_hadeed",
+        name: "محطة جبل حديد الاستراتيجية",
+        district: "رابط خورمكسر - المعلا، عدن",
+        region: "khormaksar",
+        lat: 12.8080,
+        lng: 45.0220,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "3.5 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "طريق الجسر البحري، مسار جبل حديد، وربط حركة التغطية بين مديريات عدن."
+      },
+      {
+        id: "dar_saad",
+        name: "محطة دار سعد والبساتين",
+        district: "مديرية دار سعد، عدن",
+        region: "mansoura",
+        lat: 12.8950,
+        lng: 45.0050,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "3.0 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "دار سعد، خط لحج، البساتين، اللحوم، وجولة الكراع."
+      },
+      {
+        id: "mukalla_comm",
+        name: "برج مجمع الاتصالات - المكلا",
+        district: "مدينة المكلا، حضرموت",
+        region: "mukalla",
+        lat: 14.5380,
+        lng: 49.1250,
+        freq: "1800 MHz (B3)",
+        speed: "20 Mbps",
+        range: "3.8 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "مدينة المكلا، الشرج، الديس، شارع الميناء، وخلف."
+      },
+      {
+        id: "lahj_central",
+        name: "محطة سنترال الحوطة المركزي",
+        district: "مدينة الحوطة، لحج",
+        region: "lahj_abyan",
+        lat: 13.0600,
+        lng: 44.8850,
+        freq: "700 MHz (B28)",
+        speed: "20 Mbps",
+        range: "4.2 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "مدينة الحوطة، قرى مديرية تبن، والخط الرابط مع العاصمة عدن."
+      },
+      {
+        id: "abyan_tower",
+        name: "برج مجمع زنجبار",
+        district: "مدينة زنجبار، أبين",
+        region: "lahj_abyan",
+        lat: 13.1250,
+        lng: 45.3800,
+        freq: "700 MHz (B28)",
+        speed: "20 Mbps",
+        range: "4.0 كم دائري",
+        status: "● متصل ومستقر",
+        coverage: "مدينة زنجبار، جعار، الكود، ودلتا أبين الزراعية."
+      }
+    ];
+
+    let towersMap = null;
+    let towersMarkersGroup = null;
+    let towersCirclesGroup = null;
+    let showCircles = true;
+    let userLocationMarker = null;
+    let userLocationLine = null;
+    let satTileLayer = null;
+
+    function initTowersMap() {
+      const mapContainer = document.getElementById('towersMap');
+      if (!mapContainer || typeof L === 'undefined') return;
+
+      // تهيئة خريطة Leaflet متموضعة على العاصمة عدن
+      towersMap = L.map('towersMap', {
+        center: [12.825, 45.020],
+        zoom: 12,
+        zoomControl: true,
+        scrollWheelZoom: false
+      });
+
+      // خريطة الأقمار الصناعية الفضائية الحقيقية (Esri World Imagery) - مجانية وبدون API Key
+      satTileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        attribution: 'Tiles &copy; Esri &mdash; Satellite'
+      }).addTo(towersMap);
+
+      // طبقة أسماء وتسميات المناطق والمديريات فوق القمر الصناعي
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18
+      }).addTo(towersMap);
+
+      towersMarkersGroup = L.layerGroup().addTo(towersMap);
+      towersCirclesGroup = L.layerGroup().addTo(towersMap);
+
+      // رسم الأبراج على الخريطة
+      renderTowersOnMap(adenTowers);
+    }
+
+    function renderTowersOnMap(towers) {
+      if (!towersMap) return;
+      towersMarkersGroup.clearLayers();
+      towersCirclesGroup.clearLayers();
+
+      towers.forEach(tower => {
+        // أيقونة البرج التفاعلية مع أمواج الرادار
+        const towerIconHtml = `
+          <div class="tower-marker-container group cursor-pointer" title="${tower.name}">
+            <div class="tower-radar-wave"></div>
+            <div class="tower-radar-wave"></div>
+            <div class="tower-radar-wave"></div>
+            <div class="w-8 h-8 rounded-full bg-brand text-slate-900 border-2 border-white shadow-xl flex items-center justify-center text-sm font-black relative z-10 hover:scale-125 transition-transform hover:bg-accent">
+              <i class="fa-solid fa-tower-broadcast text-xs text-slate-900"></i>
+            </div>
+          </div>
+        `;
+
+        const customMarkerIcon = L.divIcon({
+          html: towerIconHtml,
+          className: 'custom-tower-marker',
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+          popupAnchor: [0, -18]
+        });
+
+        const marker = L.marker([tower.lat, tower.lng], { icon: customMarkerIcon });
+        
+        // تلميح اسم البرج عند التمرير
+        marker.bindTooltip(tower.name, {
+          permanent: false,
+          direction: 'top',
+          offset: [0, -18],
+          className: 'tower-map-tooltip'
+        });
+
+        // النافذة المنبثقة للبرج
+        const popupHtml = `
+          <div class="p-3 text-right bg-white rounded-xl space-y-1.5 min-w-[210px] font-sans">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-1.5">
+              <span class="text-[10px] font-extrabold text-brand bg-teal-50 px-2 py-0.5 rounded">4G LTE</span>
+              <span class="text-[10px] text-emerald-600 font-bold">نشط 100%</span>
+            </div>
+            <h4 class="font-black text-slate-900 text-xs">${tower.name}</h4>
+            <div class="text-[10px] text-slate-500 font-bold">${tower.district}</div>
+            <div class="flex justify-between text-[11px] font-black pt-1 border-t border-slate-100">
+              <span class="text-slate-400">السرعة:</span>
+              <span class="text-brand">${tower.speed}</span>
+            </div>
+          </div>
+        `;
+        marker.bindPopup(popupHtml);
+
+        marker.on('click', () => {
+          selectTowerDetails(tower);
+        });
+
+        towersMarkersGroup.addLayer(marker);
+
+        // دائرة نطاق التغطية
+        const circle = L.circle([tower.lat, tower.lng], {
+          radius: 2000,
+          color: '#14a8b2',
+          fillColor: '#20bfc7',
+          fillOpacity: 0.12,
+          weight: 1.5,
+          dashArray: '4, 4'
+        });
+        towersCirclesGroup.addLayer(circle);
+      });
+    }
+
+    function selectTowerDetails(tower) {
+      document.getElementById('cardTowerName').innerText = tower.name;
+      document.getElementById('cardTowerDistrict').innerText = tower.district;
+      document.getElementById('cardTowerFreq').innerText = tower.freq;
+      document.getElementById('cardTowerSpeed').innerText = tower.speed;
+      document.getElementById('cardTowerRange').innerText = tower.range;
+      document.getElementById('cardTowerStatus').innerText = tower.status;
+      document.getElementById('cardTowerCoverage').innerText = tower.coverage;
+
+      if (towersMap) {
+        towersMap.flyTo([tower.lat, tower.lng], 14, { duration: 0.8 });
+      }
+    }
+
+    function filterTowers(region) {
+      document.querySelectorAll('.tower-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      const activeBtn = document.getElementById('tower-btn-' + region);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+        activeBtn.classList.add('bg-brand', 'text-white', 'shadow-sm');
+      }
+
+      if (!towersMap) return;
+
+      if (region === 'all') {
+        towersMap.flyTo([12.825, 45.020], 12);
+        selectTowerDetails(adenTowers[0]);
+      } else if (region === 'khormaksar') {
+        towersMap.flyTo([12.8256, 45.0345], 14);
+        selectTowerDetails(adenTowers[1]);
+      } else if (region === 'mansoura') {
+        towersMap.flyTo([12.8650, 45.0050], 14);
+        selectTowerDetails(adenTowers[2]);
+      } else if (region === 'crater') {
+        towersMap.flyTo([12.7820, 45.0150], 14);
+        selectTowerDetails(adenTowers[0]);
+      } else if (region === 'mukalla') {
+        towersMap.flyTo([14.5380, 49.1250], 14);
+        selectTowerDetails(adenTowers[9]);
+      } else if (region === 'lahj_abyan') {
+        towersMap.flyTo([13.0900, 45.1300], 11);
+        selectTowerDetails(adenTowers[10]);
+      }
+    }
+
+    function toggleCoverageCircles() {
+      if (!towersMap || !towersCirclesGroup) return;
+      showCircles = !showCircles;
+      const btnText = document.getElementById('circlesBtnText');
+      if (showCircles) {
+        towersMap.addLayer(towersCirclesGroup);
+        if (btnText) btnText.innerText = "إخفاء دوائر التغطية";
+      } else {
+        towersMap.removeLayer(towersCirclesGroup);
+        if (btnText) btnText.innerText = "إظهار دوائر التغطية";
+      }
+    }
+
+    function findNearestTower() {
+      if (!towersMap) return;
+
+      function locateAndConnect(userLat, userLng, locationDesc) {
+        // حساب أقرب برج برمجياً
+        let minDistance = Infinity;
+        let closestTower = adenTowers[0];
+
+        adenTowers.forEach(tower => {
+          const d = Math.hypot(tower.lat - userLat, tower.lng - userLng);
+          if (d < minDistance) {
+            minDistance = d;
+            closestTower = tower;
+          }
+        });
+
+        // المسافة التقريبية
+        const kmDistance = (minDistance * 111).toFixed(1);
+        const userPos = [userLat, userLng];
+
+        if (userLocationMarker) towersMap.removeLayer(userLocationMarker);
+        if (userLocationLine) towersMap.removeLayer(userLocationLine);
+
+        // إضافة أيقونة موقع المشترك
+        const userIcon = L.divIcon({
+          html: `
+            <div class="relative flex items-center justify-center">
+              <span class="w-8 h-8 rounded-full bg-amber-500/40 animate-ping absolute"></span>
+              <div class="w-8 h-8 rounded-full bg-amber-500 border-2 border-white shadow-xl flex items-center justify-center text-slate-900 text-xs font-black relative z-10">
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+          `,
+          className: 'user-pos-marker',
+          iconSize: [32, 32],
+          iconAnchor: [16, 16]
+        });
+
+        userLocationMarker = L.marker(userPos, { icon: userIcon }).addTo(towersMap);
+        userLocationMarker.bindPopup(`
+          <div class="p-2.5 text-right font-bold text-xs space-y-1">
+            <div class="text-slate-400 text-[10px]">${locationDesc}</div>
+            <div class="text-slate-900 font-black">أقرب محطة بث: ${closestTower.name}</div>
+            <div class="text-brand font-black text-xs">المسافة التقديرية: ${kmDistance} كم</div>
+          </div>
+        `).openPopup();
+
+        // رسم خط شعاعي نحو أقرب برج
+        userLocationLine = L.polyline([userPos, [closestTower.lat, closestTower.lng]], {
+          color: '#fab641',
+          weight: 3.5,
+          dashArray: '6, 8',
+          opacity: 0.95
+        }).addTo(towersMap);
+
+        towersMap.flyTo(userPos, 14, { duration: 0.9 });
+        selectTowerDetails(closestTower);
+      }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            locateAndConnect(pos.coords.latitude, pos.coords.longitude, "موقعك الفعلي عبر GPS");
+          },
+          () => {
+            // الموقع التقديري للمشترك في عدن - خورمكسر
+            locateAndConnect(12.8220, 45.0310, "موقعك التقديري (خورمكسر - عدن)");
+          },
+          { timeout: 3500 }
+        );
+      } else {
+        locateAndConnect(12.8220, 45.0310, "موقعك التقديري (خورمكسر - عدن)");
+      }
+    }
+
+    // تهيئة الخريطة عند تحميل الصفحة
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(initTowersMap, 400);
+    });
+  </script>
+</body>
+</html>

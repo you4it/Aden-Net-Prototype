@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar-aa" lang="ar-aa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الاستعلام عن الرصيد (SSP) | عدن نت 4G</title>
+  <link rel="shortcut icon" href="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/FAV-ICON0.png" type="image/vnd.microsoft.icon"/>
+
+  <!-- Google Fonts: Cairo & Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              top: '#12c1c7',
+              DEFAULT: '#20bfc7',
+              dark: '#0c848a',
+              light: '#e0f9fa'
+            },
+            accent: {
+              DEFAULT: '#fab641',
+              hover: '#e59d28'
+            }
+          },
+          fontFamily: {
+            sans: ['Cairo', 'Tajawal', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+    }
+    #sp-top-bar { background-color: #12c1c7; }
+    #sp-top-bar a { color: #ffffff; transition: color 0.2s ease; }
+    #sp-top-bar a:hover { color: #fab641; }
+    #sp-bottom { background-color: #ffffff; color: #20bfc7; padding: 70px 0px; }
+    #sp-footer { background-color: #20bfc7; }
+    .nav-link { color: #333333; font-weight: 700; transition: all 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: #20bfc7; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand selection:text-white flex flex-col min-h-screen">
+
+  <!-- ================= 1. الشريط العلوي (sp-top-bar) ================= -->
+  <section id="sp-top-bar" class="text-white text-xs sm:text-sm py-2.5 px-4 shadow-sm relative z-30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center gap-4 sm:gap-6 flex-wrap">
+        <div class="flex items-center gap-1 font-bold">
+          <i class="fa fa-globe"></i>
+          <a href="#" class="hover:underline">English</a>
+        </div>
+        <span class="text-white/40">|</span>
+        <div class="flex items-center gap-2">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <a href="tel:+9672241401" class="font-bold tracking-wide">
+            9672241401+ : الدعم الفني
+          </a>
+        </div>
+        <span class="text-white/40 hidden sm:inline">|</span>
+        <div class="hidden sm:flex items-center gap-2">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <a href="mailto:info@adennet4g.net">info@adennet4g.net</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <ul class="flex items-center gap-3.5 text-sm">
+          <li>
+            <a target="_blank" href="https://www.facebook.com/adennet4g" aria-label="facebook" class="hover:scale-110 transition-transform inline-block">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://twitter.com/@s3fkysqHLVNi0BO" aria-label="twitter" class="hover:scale-110 transition-transform inline-block">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.youtube.com/channel/UCUkTB3NB5WIc2P4XvDSRCOA" aria-label="youtube" class="hover:scale-110 transition-transform inline-block">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. الهيدر الرئيسي والشعار والقائمة (sp-header) ================= -->
+  <header id="sp-header" class="bg-white sticky top-0 z-40 border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-24">
+        <div class="logo flex items-center">
+          <a href="index.html" class="block">
+            <img class="sp-default-logo hidden sm:block max-h-16 w-auto" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/ran/logo2x.png" alt="ADEN" width="215" height="94" onerror="this.onerror=null; this.src='https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/logo.png';">
+            <img class="sp-default-logo sm:hidden max-h-12 w-auto" src="https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/mologo1-.png" alt="ADEN" width="160" height="70" onerror="this.onerror=null; this.src='https://web.archive.org/web/20260430134245im_/https://www.adennet4g.net/images/logo.png';">
+          </a>
+        </div>
+
+        <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-[15px]">
+          <a href="index.html" class="nav-link px-3 py-2 font-bold">الرئيسية</a>
+          <a href="index.html#services" class="nav-link px-3 py-2 font-bold">خدماتنا والأسعار</a>
+          <a href="index.html#coverage" class="nav-link px-3 py-2 font-bold">التغطية</a>
+          <a href="services.html" class="nav-link px-3 py-2 font-black text-brand border-b-2 border-brand">خدمات المشتركين</a>
+          <a href="index.html#locations" class="nav-link px-3 py-2 font-bold">موقعنا</a>
+          <a href="new-sim.html" class="nav-link px-3 py-2 font-bold text-amber-600">التسجيل</a>
+          <a href="balance.html" class="ml-2 px-4 py-2 rounded-lg bg-brand hover:bg-brand-dark text-white font-bold text-xs shadow-md shadow-brand/20 transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-receipt"></i>
+            <span>الاستعلام عن رصيد</span>
+          </a>
+        </nav>
+
+        <button id="offcanvasToggle" class="lg:hidden text-2xl text-brand p-2 focus:outline-none" aria-label="القائمة">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 3. شريط التنقل الفرعي وتبويبات الخدمات ================= -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-500">
+        <a href="index.html" class="hover:text-brand flex items-center gap-1">
+          <i class="fa fa-home"></i>
+          <span>الرئيسية</span>
+        </a>
+        <i class="fa fa-angle-left text-slate-300 text-xs"></i>
+        <a href="services.html" class="hover:text-brand">بوابة الخدمات الإلكترونية</a>
+        <i class="fa fa-angle-left text-slate-300 text-xs"></i>
+        <span class="text-brand font-black">الاستعلام عن الرصيد (SSP)</span>
+      </nav>
+
+      <a href="index.html" class="text-xs font-bold text-slate-600 hover:text-brand flex items-center gap-1.5 bg-slate-100 hover:bg-teal-50 px-3 py-1.5 rounded-lg transition-colors">
+        <i class="fa fa-arrow-right"></i>
+        <span>العودة للصفحة الرئيسية</span>
+      </a>
+    </div>
+
+    <!-- أزرار التبديل السريع بين الخدمات الإلكترونية -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 pt-1">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+        <a href="balance.html" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-black text-xs sm:text-sm bg-brand text-white shadow-md shadow-brand/20 transition-all border border-brand">
+          <i class="fa-solid fa-receipt"></i>
+          <span>الاستعلام عن الرصيد</span>
+        </a>
+        <a href="user-data.html" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-slate-50 hover:bg-teal-50/70 text-slate-700 hover:text-brand transition-all border border-slate-200">
+          <i class="fa-solid fa-id-card text-brand"></i>
+          <span>بيانات المشترك</span>
+        </a>
+        <a href="new-sim.html" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-slate-50 hover:bg-amber-50/70 text-slate-700 hover:text-amber-600 transition-all border border-slate-200">
+          <i class="fa-solid fa-sim-card text-amber-500"></i>
+          <span>التقديم لشريحة 4G</span>
+        </a>
+        <a href="sim-replacement.html" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-slate-50 hover:bg-blue-50/70 text-slate-700 hover:text-blue-600 transition-all border border-slate-200">
+          <i class="fa-solid fa-repeat text-blue-500"></i>
+          <span>طلب بدل فاقد</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 4. المحتوى الرئيسي لصفحة الاستعلام عن الرصيد ================= -->
+  <main class="flex-grow py-10 sm:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- كارت الاستعلام الرئيسي -->
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10 mb-8">
+        
+        <div class="text-center max-w-lg mx-auto mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-teal-50 text-brand flex items-center justify-center text-3xl mx-auto mb-4 border border-teal-100">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">الاستعلام عن رصيد عدن نت</h1>
+          <p class="text-sm text-slate-500 font-bold leading-relaxed">
+            بوابة الخدمة الذاتية (Self-Service Portal - SSP). أدخل رقم الشريحة لمعرفة الرصيد المتبقي وتاريخ الصلاحية وحالة الاشتراك.
+          </p>
+        </div>
+
+        <form id="balanceForm" onsubmit="handleInquiry(event)" class="max-w-xl mx-auto space-y-5">
+          <div>
+            <label for="inquirySim" class="block text-sm font-bold text-slate-700 mb-2">رقم شريحة عدن نت أو رقم الحساب:</label>
+            <div class="relative">
+              <input type="text" id="inquirySim" required placeholder="مثال: 791048291" value="791048291" class="w-full p-4 pl-12 bg-slate-50 border-2 border-slate-200 rounded-2xl text-base font-mono font-bold text-slate-900 focus:outline-none focus:border-brand focus:bg-white transition-all text-left" dir="ltr">
+              <span class="absolute left-4 top-4 text-slate-400 font-bold font-mono">4G</span>
+            </div>
+            <p class="text-xs text-slate-400 font-bold mt-1.5 mr-1">يمكنك استخدام رقم الشريحة التجريبي الحالي للمعاينة المباشرة</p>
+          </div>
+
+          <button type="submit" id="balanceSubmitBtn" class="w-full py-4 bg-brand hover:bg-brand-dark text-white font-black rounded-2xl shadow-lg shadow-brand/25 transition-all text-base flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>استعلام فوري عن الرصيد</span>
+          </button>
+        </form>
+
+        <!-- نتيجة الاستعلام التفصيلية -->
+        <div id="inquiryResult" class="max-w-xl mx-auto mt-8 pt-8 border-t border-slate-100 space-y-5">
+          <div class="bg-gradient-to-br from-teal-50 via-white to-teal-50/30 p-6 sm:p-7 rounded-3xl border-2 border-brand/30 shadow-sm space-y-4">
+            
+            <div class="flex flex-wrap items-center justify-between pb-4 border-b border-teal-100 gap-2">
+              <div>
+                <span class="text-xs text-slate-400 font-bold block">رقم الحساب المستعلم عنه:</span>
+                <span id="resBalanceSim" class="font-mono text-brand font-black text-xl" dir="ltr">791048291</span>
+              </div>
+              <span class="bg-emerald-100 text-emerald-800 font-black text-xs px-3.5 py-1.5 rounded-full border border-emerald-200 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>متصل ونشط (4G LTE)</span>
+              </span>
+            </div>
+
+            <!-- عرض الرصيد المتبقي بشكل بارز -->
+            <div class="bg-white p-5 rounded-2xl border border-teal-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span class="text-xs text-slate-500 font-bold block mb-1">الرصيد المتبقي من الباقة:</span>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-4xl font-black text-brand">28.4</span>
+                  <span class="text-lg font-black text-slate-700">جيجابايت (GB)</span>
+                </div>
+              </div>
+              <div class="w-full sm:w-48 text-left">
+                <div class="flex justify-between text-xs font-bold text-slate-500 mb-1">
+                  <span>المستهلك: 11.6 GB</span>
+                  <span class="text-brand">71% متبقي</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                  <div class="bg-brand h-full rounded-full" style="width: 71%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-bold text-slate-700">
+              <div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center">
+                <span class="text-slate-500">الباقة المشترك بها:</span>
+                <span class="text-slate-900 font-black">باقة 40 جيجابايت</span>
+              </div>
+              <div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center">
+                <span class="text-slate-500">تاريخ الانتهاء:</span>
+                <span class="font-mono text-amber-600 font-black">2026/10/24</span>
+              </div>
+              <div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center">
+                <span class="text-slate-500">الأيام المتبقية:</span>
+                <span class="text-emerald-600 font-black">25 يوماً</span>
+              </div>
+              <div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center">
+                <span class="text-slate-500">السرعة المحددة:</span>
+                <span class="text-slate-900 font-black">حتى 20 Mbps</span>
+              </div>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row gap-3">
+              <a href="index.html#services" class="flex-1 py-3 bg-brand hover:bg-brand-dark text-white font-black rounded-xl text-xs text-center transition-colors shadow-md">
+                تجديد الباقة أو ترقيتها
+              </a>
+              <button type="button" onclick="resetBalanceForm()" class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
+                <i class="fa fa-redo"></i>
+                <span>الاستعلام عن رقم آخر</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- إرشادات سداد الرصيد والاستعلام -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 text-brand flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <h3 class="font-black text-slate-900 text-sm mb-2">طرق سداد الباقة</h3>
+          <p class="text-xs text-slate-600 font-bold leading-relaxed">
+            يمكنك تسديد قيمة الباقة الشهرية عبر مكاتب البريد العام، كاك بنك، بنك القطيبي، بنك البسيري، والوكلاء المعتمدين في كافة مديريات العاصمة عدن والمحافظات.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+          <h3 class="font-black text-slate-900 text-sm mb-2">صلاحية الباقة</h3>
+          <p class="text-xs text-slate-600 font-bold leading-relaxed">
+            تبدأ صلاحية الباقة لمدة 30 يوماً من تاريخ التفعيل. يتم ترحيل الرصيد المتبقي تلقائياً في حال تم التجديد قبل انتهاء فترة الصلاحية المحددة.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <h3 class="font-black text-slate-900 text-sm mb-2">الدعم الفني</h3>
+          <p class="text-xs text-slate-600 font-bold leading-relaxed">
+            لأي استفسار بخصوص الرصيد أو عدم وصول التغذية للحساب، تواصل مع فريق خدمة العملاء على مدار 24 ساعة عبر الرقم <strong>9672241401+</strong>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= 5. الفوتر السفلي (sp-bottom) ================= -->
+  <section id="sp-bottom" class="border-t border-slate-200 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-4 space-y-4">
+          <h3 class="text-xl font-black text-brand pb-2 border-b-2 border-brand/20 inline-block">
+            من نحن
+          </h3>
+          <p class="text-slate-700 text-sm leading-relaxed font-bold text-justify">
+            عدن نت هي مزود حكومي لخدمة الإنترنت تعمل على تزويد خدمة الإنترنت بتقنية الجيل الرابع المعروفة عالمياً و تهدف إلى تقديم خدمة الإنترنت السلكي و اللاسلكي بشكل متطور يواكب التطور العالمي في تقديم خدمة الإنترنت و تراسل المعطيات.
+          </p>
+        </div>
+
+        <div class="md:col-span-5 space-y-4">
+          <h3 class="text-xl font-black text-brand pb-2 border-b-2 border-brand/20 inline-block">
+            روابط سريعة
+          </h3>
+          <div class="grid grid-cols-2 gap-2 text-sm font-bold">
+            <a href="balance.html" class="text-slate-800 hover:text-brand block transition-colors">الاستعلام عن الرصيد</a>
+            <a href="user-data.html" class="text-slate-800 hover:text-brand block transition-colors">بيانات المشترك</a>
+            <a href="new-sim.html" class="text-slate-800 hover:text-brand block transition-colors">حجز شريحة جديدة</a>
+            <a href="sim-replacement.html" class="text-slate-800 hover:text-brand block transition-colors">طلب بدل فاقد</a>
+            <a href="index.html#services" class="text-slate-800 hover:text-brand block transition-colors">الباقات والأسعار</a>
+            <a href="index.html#locations" class="text-slate-800 hover:text-brand block transition-colors">مراكز الخدمة</a>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-4">
+          <h3 class="text-xl font-black text-brand pb-2 border-b-2 border-brand/20 inline-block">
+            خدمة المشتركين
+          </h3>
+          <div class="text-sm font-bold text-slate-700 space-y-2">
+            <div>هاتف الدعم: <span dir="ltr" class="text-brand font-black">+967 2 241401</span></div>
+            <div>البريد: info@adennet4g.net</div>
+            <div>العاصمة عدن، مديرية خورمكسر</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. الفوتر النهائي (sp-footer) ================= -->
+  <footer id="sp-footer" class="py-5 text-white text-center text-sm font-bold">
+    <div class="max-w-7xl mx-auto px-4">
+      <span>© 2026 كل الحقوق محفوظة عدن نت.</span>
+    </div>
+  </footer>
+
+  <!-- ================= 7. القائمة الجانبية للجوال (Offcanvas Menu) ================= -->
+  <div id="offcanvasMenu" class="fixed inset-0 z-50 hidden">
+    <div onclick="closeOffcanvas()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-50 p-6 shadow-2xl overflow-y-auto space-y-6">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <span class="font-black text-brand text-lg">قائمة عدن نت</span>
+        <button onclick="closeOffcanvas()" class="text-slate-400 hover:text-slate-700 text-xl" aria-label="إغلاق">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+
+      <nav class="space-y-1 text-sm font-bold text-slate-700">
+        <a href="index.html" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">الرئيسية</a>
+        <a href="index.html#services" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">خدماتنا والأسعار</a>
+        <a href="index.html#coverage" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">التغطية والمناطق</a>
+        <a href="index.html#locations" class="block py-2.5 px-3 rounded-lg hover:bg-slate-50">موقعنا ومراكز الخدمة</a>
+        
+        <div class="pt-3 pb-1 border-t border-slate-100 text-xs font-black text-slate-400 px-3">الخدمات الإلكترونية الذاتية:</div>
+        <a href="balance.html" class="block py-2 px-3 rounded-lg text-brand bg-teal-50 font-black">الاستعلام عن الرصيد (SSP)</a>
+        <a href="user-data.html" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-slate-50">استعلام عن بيانات المستخدم</a>
+        <a href="new-sim.html" class="block py-2 px-3 rounded-lg text-amber-600 hover:bg-amber-50">التقديم لشريحة 4G جديدة</a>
+        <a href="sim-replacement.html" class="block py-2 px-3 rounded-lg text-blue-600 hover:bg-blue-50">تقديم طلب بدل فاقد</a>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    // القائمة المتنقلة للجوال
+    const offcanvasMenu = document.getElementById('offcanvasMenu');
+    document.getElementById('offcanvasToggle').addEventListener('click', () => {
+      offcanvasMenu.classList.remove('hidden');
+    });
+    function closeOffcanvas() {
+      offcanvasMenu.classList.add('hidden');
+    }
+
+    // معالجة الاستعلام
+    function handleInquiry(e) {
+      e.preventDefault();
+      const btn = document.getElementById('balanceSubmitBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> <span>جاري الاستعلام عن الرصيد...</span>`;
+      btn.disabled = true;
+
+      const simVal = document.getElementById('inquirySim').value.trim() || '791048291';
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('resBalanceSim').innerText = simVal;
+        document.getElementById('inquiryResult').classList.remove('hidden');
+        document.getElementById('inquiryResult').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 400);
+    }
+
+    function resetBalanceForm() {
+      document.getElementById('inquirySim').value = '';
+      document.getElementById('inquirySim').focus();
+    }
+  </script>
+</body>
+</html>
